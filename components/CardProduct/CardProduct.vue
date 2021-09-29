@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <router-link
+      :to="{
+        path: `/productdetail/${data.id}`,
+       
+      }"
+      class="text-decoration-none"
+    >
+      <div class="card product-book" style="border:none;height:300px">
+        <img
+          :src="apiUrl + data.image.url"
+          :alt="data.book_name"
+          class="card-img-top"
+        />
+
+        <div class="card-body">
+          <div
+            class="card-title text-dark text-center"
+            style="font-size:14px;font-weight:300; overflow: hidden;height:40px;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2; 
+                  -webkit-box-orient: vertical;
+                  "
+          >
+            {{ data.book_name }}
+          </div>
+          <p class="card-text text-dark text-center" style="font-size:16px">
+            <b>{{ parseInt(data.price) }} đ</b>
+          </p>
+        </div>
+      </div>
+    </router-link>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ["data"],
+
+  data() {
+    return {
+      apiUrl: process.env.VUE_APP_DATABASE_URL,
+    };
+  },
+};
+</script>
