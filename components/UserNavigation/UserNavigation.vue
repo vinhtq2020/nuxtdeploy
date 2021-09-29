@@ -145,8 +145,8 @@
 
               <!-- GIỎ HÀNG -->
               <div class="nav-item">
-                <router-link
-                  :to="{ name: 'checkout' }"
+                <nuxt-link
+                  :to="{ path: '/checkout' }"
                   class="text-light row ml-5 text-decoration-none"
                 >
                   <div style="position: relative">
@@ -168,26 +168,26 @@
                     <br />
                     Giỏ hàng
                   </div>
-                </router-link>
+                </nuxt-link>
               </div>
             </div>
           </div>
         </nav>
       </div>
     </header>
-    <!-- <login-modal :show="show" @close="close()" />
-    <register-modal :show="showRegister" @close="closeRegister()" /> -->
+    <login-modal :show="show" @close="close()" />
+    <register-modal :show="showRegister" @close="closeRegister()" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import BaseRequest from '@/core/BaseRequest.js'
-// import LoginModal from "@/components/LoginModal/LoginModal.vue";
-// import RegisterModal from "@/components/RegisterModal/RegisterModal.vue";
+import LoginModal from "@/components/LoginModal/LoginModal.vue";
+import RegisterModal from "@/components/RegisterModal/RegisterModal.vue";
 // import localStorage from '@/plugins/localStorage.js';
 export default {
-  // components: { LoginModal, RegisterModal },
+  components: { LoginModal, RegisterModal },
   data() {
     return {
       name: '',

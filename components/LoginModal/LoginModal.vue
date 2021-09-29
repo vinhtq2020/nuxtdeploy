@@ -1,6 +1,5 @@
 <template>
-<div></div>
-  <!-- <transition name="fade-shrink-in" appear>
+  <transition name="fade-shrink-in" appear>
     <div v-show="show">
       <div class="modal-mask">
         <div class="modal-wrapper">
@@ -46,12 +45,12 @@
                           value="Đăng nhập"
                           style="font-size:20px"
                         />
-                      </div> -->
+                      </div> 
                       <!-- <div class="form-group">
                         <a href="#" class="ForgetPwd">Forget Password?</a>
                       </div> -->
                     
-                    <!-- </form>
+                     </form>
                   </div>
                   <div class="col-md-5 pr-4">
                     <div>
@@ -69,7 +68,7 @@
                     </div>
                     <div>
                       <img
-                        src="@/assets/25b2ccba8f33a5157f161b6a50f64a60.png"
+                        src="@/static/assets/25b2ccba8f33a5157f161b6a50f64a60.png"
                         class="img-fluid"
                         alt="hình ảnh chân thật"
                       />
@@ -82,51 +81,51 @@
         </div>
       </div>
     </div>
-  </transition> -->
+  </transition>
 </template>
 
 <script>
-// import BaseRequest from "@/core/BaseRequest.js";
-// export default {
-//   props: ["show"],
-//   methods: {
-//     close() {
-//       this.$emit("close");
-//     },
-//     submitLogin() {
-//       BaseRequest.post("login", { email: this.email, password: this.password })
-//         .then((response) => {
-//           console.log(response);
-//           window.localStorage.setItem("token", response.data.token);
-//           this.close();
-//           // this.$router.push({ name: "user/home" });
-//           this.$router.go();
-//         })
-//         .catch((error) => {
-//           if (error.response.status == 401) {
-//             this.isFail = true;
-//             this.errorMessage =
-//               "Sai tên đăng nhập hoặc mật khẩu, vui lòng đăng nhập lại";
-//           } else if (error.response.status == 422) {
-//             this.errorMessage = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
-//             this.isFail = true;
-//           }
-//         });
-//     },
-//   },
-//   data() {
-//     return {
-//       isFail: false,
-//       email: "",
-//       password: "",
-//       errorMessage: "",
-//     };
-//   },
-// };
+import BaseRequest from "@/core/BaseRequest.js";
+export default {
+  props: ["show"],
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+    submitLogin() {
+      BaseRequest.post("login", { email: this.email, password: this.password })
+        .then((response) => {
+          console.log(response);
+          window.localStorage.setItem("token", response.data.token);
+          this.close();
+          // this.$router.push({ name: "user/home" });
+          this.$router.go();
+        })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            this.isFail = true;
+            this.errorMessage =
+              "Sai tên đăng nhập hoặc mật khẩu, vui lòng đăng nhập lại";
+          } else if (error.response.status === 422) {
+            this.errorMessage = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
+            this.isFail = true;
+          }
+        });
+    },
+  },
+  data() {
+    return {
+      isFail: false,
+      email: "",
+      password: "",
+      errorMessage: "",
+    };
+  },
+};
 </script>
 
 <style>
-/* .modal-mask {
+.modal-mask {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -141,5 +140,5 @@
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
-} */
+}
 </style>

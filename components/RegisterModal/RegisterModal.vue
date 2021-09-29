@@ -1,6 +1,5 @@
 <template>
-<div></div>
-  <!-- <transition name="fade-shrink-in" appear>
+  <transition name="fade-shrink-in" appear>
     <div v-show="show">
       <div class="modal-mask">
         <div class="modal-wrapper">
@@ -93,7 +92,7 @@
                     </div>
                     <div>
                       <img
-                        src="@/assets/25b2ccba8f33a5157f161b6a50f64a60.png"
+                        src="@/static/assets/25b2ccba8f33a5157f161b6a50f64a60.png"
                         class="img-fluid"
                         alt="hình ảnh chân thật"
                       />
@@ -106,77 +105,77 @@
         </div>
       </div>
     </div>
-  </transition> -->
+  </transition>
 </template>
 
 <script>
-// import BaseRequest from "@/core/BaseRequest.js";
+import BaseRequest from "@/core/BaseRequest.js";
 
-// export default {
-//   props: ["show"],
-//   methods: {
-//     close() {
-//       this.$emit("close");
-//     },
-//     updateCustomValidity(errorMatchedPass) {
-//       var el = this.$refs.el;
-//       el.oninvalid = el.setCustomValidity(errorMatchedPass);
-//     },
+export default {
+  props: ["show"],
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+    updateCustomValidity(errorMatchedPass) {
+      const el = this.$refs.el;
+      el.oninvalid = el.setCustomValidity(errorMatchedPass);
+    },
 
-//     submitRegister() {
-//       BaseRequest.post("register", {
-//         email: this.email,
-//         name: this.name,
-//         password: this.password,
-//         role_id: this.idRole,
-//       })
-//         .then((response) => {
-//           console.log(response);
-//           alert("đăng ký thành công");
-//           this.close();
-//           this.$router.go();
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//           this.errorMessage = "email đã tồn tại";
-//           this.isFail = true;
-//         });
-//     },
-//   },
-//   mounted() {
-//     this.updateCustomValidity("");
-//   },
-//   watch: {
-//     confirmPass() {
-//       if (this.password != this.confirmPass) {
-//         this.updateCustomValidity("phải trùng khớp với mật khẩu");
-//       } else {
-//         this.updateCustomValidity("");
-//       }
-//     },
-//     password() {
-//       if (this.password != this.confirmPass) {
-//         this.updateCustomValidity("phải trùng khớp với mật khẩu");
-//       } else {
-//         this.updateCustomValidity("");
-//       }
-//     },
-//   },
-//   data() {
-//     return {
-//       name: "",
-//       isFail: false,
-//       email: "",
-//       password: "",
+    submitRegister() {
+      BaseRequest.post("register", {
+        email: this.email,
+        name: this.name,
+        password: this.password,
+        role_id: this.idRole,
+      })
+        .then((response) => {
+          console.log(response);
+          alert("đăng ký thành công");
+          this.close();
+          this.$router.go();
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errorMessage = "email đã tồn tại";
+          this.isFail = true;
+        });
+    },
+  },
+  mounted() {
+    this.updateCustomValidity("");
+  },
+  watch: {
+    confirmPass() {
+      if (this.password !== this.confirmPass) {
+        this.updateCustomValidity("phải trùng khớp với mật khẩu");
+      } else {
+        this.updateCustomValidity("");
+      }
+    },
+    password() {
+      if (this.password !== this.confirmPass) {
+        this.updateCustomValidity("phải trùng khớp với mật khẩu");
+      } else {
+        this.updateCustomValidity("");
+      }
+    },
+  },
+  data() {
+    return {
+      name: "",
+      isFail: false,
+      email: "",
+      password: "",
 
-//       confirmPass: "",
-//       idRole: 1,
+      confirmPass: "",
+      idRole: 1,
 
-//       errorMatchedPass: "",
-//       errorMessage: "",
-//     };
-//   },
-// };
+      errorMatchedPass: "",
+      errorMessage: "",
+    };
+  },
+};
 </script>
 
 <style>

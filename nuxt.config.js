@@ -14,6 +14,10 @@ export default {
       },
       {
           src:'/assets/js/bootstrap.bundle.min.js',
+      },
+      {
+        src:"https://www.paypal.com/sdk/js?client-id=AT0_SY5GRDe6KhYEWNv6PAYRkyqZNSjn2Pb_uKC2rwzwgjqeSwGVqySrOvCG4x5ApU8e4ydOah6M8DZx"
+
       }
   ],
     link: [
@@ -31,6 +35,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
    {src: '~/plugins/paginate.js',mode:'client'},
+   { src: '~/plugins/paypal.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

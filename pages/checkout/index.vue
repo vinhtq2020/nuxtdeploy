@@ -54,7 +54,7 @@
 import { mapActions, mapGetters } from "vuex";
 import BaseRequest from "@/core/BaseRequest";
 import MoMo from "@/components/MoMo/MoMo.vue";
-import PayPal from "@/components/PayPal/PayPal.vue";
+import PayPal from "~/components/PayPal/PayPal.vue";
 import CartItem from "~/components/CartItem/CartItem.vue";
 
 export default {
@@ -73,7 +73,7 @@ export default {
     if (this.$route.query.errorCode != null) {
       this.errorCode = this.$route.query.errorCode;
       console.log("errorCode: ", this.$route.query.errorCode);
-      if (this.errorCode == 0) {
+      if (this.errorCode === 0) {
         this.checkOut();
       }
     }
@@ -94,12 +94,12 @@ export default {
       console.log("khi checkout ", {
         user_id: this.userId,
         total: this.value.totalMoney,
-        books_array: this.value.booksInCart, //array
+        books_array: this.value.booksInCart,
       });
       BaseRequest.post("bill", {
         user_id: this.userId,
         total: this.value.totalMoney,
-        books_array: this.value.booksInCart, //array
+        books_array: this.value.booksInCart, 
         status: "thành công",
       })
         .then((response) => {
@@ -114,11 +114,11 @@ export default {
         });
     },
     showPayOptions() {
-      let token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem("token");
       if (token == null) {
         alert("bạn cần đăng nhập để tiếp tục");
       } else {
-        if (this.value.count == 0) {
+        if (this.value.count === 0) {
           alert("giỏ hàng đang trống không thể thanh toán");
         } else {
           this.show = true;
