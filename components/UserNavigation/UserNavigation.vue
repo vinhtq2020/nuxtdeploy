@@ -133,7 +133,7 @@
                   <router-link
                     v-if="(roleId = 1)"
                     class="dropdown-item"
-                    :to="{ name: 'revenue' }"
+                    :to="{ path: '/admin/revenue' }"
                     >Trang admin</router-link
                   >
                   <div class="dropdown-divider"></div>

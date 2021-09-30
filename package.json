@@ -24,8 +24,10 @@
     "hooper": "^0.3.4",
     "nuxt": "^2.15.7",
     "query-string": "^7.0.1",
+    "vue-chartjs": "^3.5.1",
     "vue-paypal-checkout": "^3.2.0",
-    "vuejs-paginate": "^2.1.0"
+    "vuejs-paginate": "^2.1.0",
+    "vuelidate": "^0.7.6"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
