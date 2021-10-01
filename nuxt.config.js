@@ -1,8 +1,5 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  generate:{
-    fallback:true
-  },
   target:'static',
   head: {
     title: 'vuedeploy',
