@@ -1,4 +1,4 @@
-<script>
+
 import { Line } from "vue-chartjs";
 
 export default {
@@ -34,4 +34,3 @@ export default {
   
   
 };
-</script>

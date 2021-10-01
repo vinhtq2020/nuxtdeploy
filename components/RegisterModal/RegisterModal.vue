@@ -169,7 +169,7 @@ export default {
       password: "",
 
       confirmPass: "",
-      idRole: 1,
+      idRole: 2,
 
       errorMatchedPass: "",
       errorMessage: "",

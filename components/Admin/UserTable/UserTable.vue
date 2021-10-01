@@ -9,7 +9,7 @@
         <div class="table-title">
           <div class="row">
             <div class="col-6">
-              <h2>Manager<b>Bill</b></h2>
+              <h2>Manager<b>User</b></h2>
             </div>
           </div>
         </div>
@@ -22,16 +22,15 @@
                   <label for="selectAll"></label>
                 </span>
               </th>
-              <th style="width:10%">id Bill</th>
+              <th>id User</th>
               <th>username</th>
               <th>email</th>
-              <th>create at</th>
-              <th>total</th>
-              
+              <th>roles</th>
+              <th v-if="!pageData">action</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="po in bills" :key="po.id" >
+            <tr v-for="po in users" :key="po.id">
               <td>
                 <span>
                   <input
@@ -43,12 +42,19 @@
                   <label for="checkbox1"></label>
                 </span>
               </td>
-              <td><nuxt-link :to="{path:`/admin/billdetail/${po.id}`}">  {{po.id}}</nuxt-link></td>
-              <td>{{ po.user.name }}</td>
-              <td>{{ po.user.email}}</td>
-              <td>{{po.created_at.getHours()}}:{{po.created_at.getMinutes()}} {{po.created_at.getDate()}}/{{po.created_at.getMonth()+1}}/{{po.created_at.getFullYear()}}</td>
-              <td>{{ po.total }}</td>
-
+              <td>{{ po.id }}</td>
+              <td>{{ po.name }}</td>
+              <td>{{ po.email }}</td>
+              <td>
+                <select name="" id="" v-model="po.role_id" @change="changeRole(po.id, po.role_id)">
+                    <option value=1>admin</option>
+                    <option value=2>user</option>
+                </select>
+              </td>
+              <td><router-link :to="{path:`/admin/usermanager/infouser/${po.id}`}" class="add-quatity"
+                  ><i class="material-icons">&#xe88e;</i></router-link
+                ></td>
+              
             </tr>
           </tbody>
         </table>
@@ -73,23 +79,24 @@
 </template>
 
 <script>
+
 import BaseRequest from "@/core/BaseRequest";
 
 export default {
   props: ["pageData"],
   mounted() {
-    this.getBill();
+    this.getUser();
   },
   data() {
     return {
-      bills: [],
+      users: [],
       currentPage: 1,
       totalPage: 1,
     };
   },
   watch: {
     currentPage() {
-      this.getBill();
+      this.getUser();
     },
   },
   methods: {
@@ -97,26 +104,27 @@ export default {
       // tham số page là page hiện tại
       this.currentPage = page;
     },
-
-    getBill() {
-      BaseRequest.get("bill?page=" + this.currentPage)
+    getUser() {
+      BaseRequest.get("user/action/getAll?page="+this.currentPage)
         .then((result) => {
-          console.log(result);
-          this.bills = result.data.data;
-          this.bills.forEach(element => {
-            element.created_at = new Date(element.created_at);
-          });
-          if (this.pageData) {
-            this.totalPage = this.pageData;
-          } else {
-            this.totalPage = result.data.last_page;
-          }
+          this.users = result.data.user_list.data;
+          console.log(this.users);
         })
         .catch((err) => {
           console.log(err);
         });
     },
+
+    changeRole(id,roleId){
+       
+       BaseRequest.post('user/action/changeRole',{user_id:id,role_id:roleId}).then((result) => {
+            console.log(result.data.message);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
   },
 
 };
 </script>
+

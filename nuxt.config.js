@@ -37,7 +37,6 @@ export default {
    {src: '~/plugins/paginate.js',mode:'client'},
    { src: '~/plugins/paypal.js', ssr: false },
    {src:'~/plugins/vuelidate.js'},
-   {src:'~/plugins/vue-chartjs.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

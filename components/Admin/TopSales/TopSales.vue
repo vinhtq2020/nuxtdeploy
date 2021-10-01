@@ -9,30 +9,28 @@
         <div class="table-title">
           <div class="row">
             <div class="col-6">
-              <h2>Manager<b>Bill</b></h2>
+              <h2>Top 5 Sale in <b>Month</b></h2>
             </div>
           </div>
         </div>
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th>
+              <!-- <th>
                 <span class="custom-checkbox">
                   <input type="checkbox" id="selectAll" />
                   <label for="selectAll"></label>
                 </span>
-              </th>
-              <th style="width:10%">id Bill</th>
-              <th>username</th>
-              <th>email</th>
-              <th>create at</th>
-              <th>total</th>
+              </th> -->
+              <th >id book</th>
+              <th>Book name</th>
+              <th>number of purchases</th>
               
             </tr>
           </thead>
           <tbody>
-            <tr v-for="po in bills" :key="po.id" >
-              <td>
+            <tr v-for="po in books" :key="po.id">
+              <!-- <td>
                 <span>
                   <input
                     type="checkbox"
@@ -42,17 +40,18 @@
                   />
                   <label for="checkbox1"></label>
                 </span>
-              </td>
-              <td><nuxt-link :to="{path:`/admin/billdetail/${po.id}`}">  {{po.id}}</nuxt-link></td>
-              <td>{{ po.user.name }}</td>
-              <td>{{ po.user.email}}</td>
-              <td>{{po.created_at.getHours()}}:{{po.created_at.getMinutes()}} {{po.created_at.getDate()}}/{{po.created_at.getMonth()+1}}/{{po.created_at.getFullYear()}}</td>
-              <td>{{ po.total }}</td>
+              </td> -->
+              <td>{{ po.id }}</td>
+              <td>{{ po.book_name }}</td>
+              <td>{{ po.bill_detail_count }}</td>
+              
 
+              
             </tr>
           </tbody>
         </table>
         <paginate
+        v-if="numberColumn"
           :page-count="totalPage"
           :click-handler="clickCallback"
           :prev-text="'Prev'"
@@ -76,13 +75,13 @@
 import BaseRequest from "@/core/BaseRequest";
 
 export default {
-  props: ["pageData"],
+  props: ["numberColumn"],
   mounted() {
-    this.getBill();
+    this.getTopSaleBook(5);
   },
   data() {
     return {
-      bills: [],
+      books: [],
       currentPage: 1,
       totalPage: 1,
     };
@@ -93,24 +92,15 @@ export default {
     },
   },
   methods: {
-    clickCallback(page) {
+    clickCallback(page){
       // tham số page là page hiện tại
       this.currentPage = page;
     },
-
-    getBill() {
-      BaseRequest.get("bill?page=" + this.currentPage)
+    getTopSaleBook(number) {
+      BaseRequest.get("book/action/getBookBestSale/" + number)
         .then((result) => {
-          console.log(result);
-          this.bills = result.data.data;
-          this.bills.forEach(element => {
-            element.created_at = new Date(element.created_at);
-          });
-          if (this.pageData) {
-            this.totalPage = this.pageData;
-          } else {
-            this.totalPage = result.data.last_page;
-          }
+          console.log('book sale',result.data);
+          this.books = result.data;
         })
         .catch((err) => {
           console.log(err);
