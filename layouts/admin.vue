@@ -21,7 +21,7 @@ export default {
     checkLoggedIn() {
       BaseRequest.get('user')
         .then(function (response) {
-          if (response.data.role_id === 2) {
+          if (response.data.role_id ===2) {
             this.$router.push({ path: '/' })
           }
         })
