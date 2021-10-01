@@ -144,8 +144,6 @@ import {mapGetters,mapActions} from 'vuex'
 import BaseRequest from '~/core/BaseRequest'  
 export default {
     layout:'public',
-    
-  
   data() {
     return {
       booksRelate: [],
@@ -172,12 +170,11 @@ export default {
       },
     };
   },
-  metaInfo() {
-    return {
-      title: "chi tiết sản phẩm",
+  head(){
+    return{
+      title:"chi tiết sản phẩm",
       meta: [
         {
-          vmid:"og:url",
           property:"og:url",
           content:window.location.href
         },
@@ -227,7 +224,7 @@ export default {
           content: this.urlImage,
         },
       ],
-    };
+    }
   },
   computed: {
     ...mapGetters(["getBookQuatityInCartById"]),

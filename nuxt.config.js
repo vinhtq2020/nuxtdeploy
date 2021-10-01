@@ -1,5 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  generate:{
+    fallback:true
+  },
   target:'static',
   head: {
     title: 'vuedeploy',
@@ -75,6 +78,7 @@ export default {
   },
 
   env:{
-    VUE_APP_DATABASE_URL:process.env.VUE_APP_DATABASE_URL
+    VUE_APP_DATABASE_URL:process.env.VUE_APP_DATABASE_URL,
+    VUE_APP_BASE_URL:process.env.VUE_APP_BASE_URL
   }
 }
