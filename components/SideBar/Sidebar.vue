@@ -203,7 +203,7 @@ export default {
         url = { ...url, params: { categoryId: this.$route.params.categoryId } };
       }
         this.$router.push(url);
-       
+        this.$router.refresh();
 
     },
     setPrice(min, max) {
