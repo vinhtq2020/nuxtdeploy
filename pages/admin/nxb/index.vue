@@ -6,7 +6,7 @@
 
 <script>
 import BaseRequest from '@/core/BaseRequest'
-import NxbTable from '@/components/admin/NxbTable/NxbTable'
+import NxbTable from '@/components/Admin/NxbTable/NxbTable'
 
 export default {
   components: { NxbTable },

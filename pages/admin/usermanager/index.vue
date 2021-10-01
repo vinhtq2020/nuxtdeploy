@@ -14,7 +14,7 @@
 
 <script>
 import BaseRequest from "@/core/BaseRequest";
-import UserTable from "@/components/admin/UserTable/UserTable";
+import UserTable from "@/components/Admin/UserTable/UserTable";
 
 export default {
   components: { UserTable, },

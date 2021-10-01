@@ -8,7 +8,7 @@
 
 <script>
 import BaseRequest from "@/core/BaseRequest";
-import AuthorTable from "@/components/admin/AuthorTable/AuthorTable";
+import AuthorTable from "@/components/Admin/AuthorTable/AuthorTable";
 export default {
   components: { AuthorTable },
   layout:'admin',

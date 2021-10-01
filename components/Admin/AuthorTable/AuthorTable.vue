@@ -92,10 +92,6 @@
 </template>
 
 <script>
-
-// import "materialize-css";
-// import "materialize-css/dist/css/materialize.css";
-// import DataTable from "vue-materialize-datatable";
 import BaseRequest from "@/core/BaseRequest";
 
 export default {
