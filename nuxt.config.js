@@ -13,7 +13,7 @@ export default {
         src:'https://code.jquery.com/jquery-3.5.1.slim.min.js',
       },
       {
-          src:'/assets/js/bootstrap.bundle.min.js',
+          src:'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js',
       },
       {
         src:"https://www.paypal.com/sdk/js?client-id=AT0_SY5GRDe6KhYEWNv6PAYRkyqZNSjn2Pb_uKC2rwzwgjqeSwGVqySrOvCG4x5ApU8e4ydOah6M8DZx"
@@ -24,7 +24,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: '/assets/css/bootstrap.min.css'
+        href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css'
       },
       {rel:'stylesheet',href:"//cdn-images.mailchimp.com/embedcode/classic-10_7.css"}
     ]
