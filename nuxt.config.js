@@ -18,6 +18,12 @@ export default {
       {
         src:"https://www.paypal.com/sdk/js?client-id=AT0_SY5GRDe6KhYEWNv6PAYRkyqZNSjn2Pb_uKC2rwzwgjqeSwGVqySrOvCG4x5ApU8e4ydOah6M8DZx"
 
+      },
+      {
+        src:"https://ahachat.com/customer-chats/customer_chat_ENbVt0HmDM614f3facaaddf.js"
+      },
+      {
+        src:"//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
       }
   ],
     link: [
