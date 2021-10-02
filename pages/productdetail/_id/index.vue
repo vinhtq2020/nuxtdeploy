@@ -276,7 +276,7 @@ export default {
         },
       }
 
-      this.getBookByCategoryId(this.bookId);
+      this.getBookByCategoryId(this.categoryId);
     }
   },
   methods: {

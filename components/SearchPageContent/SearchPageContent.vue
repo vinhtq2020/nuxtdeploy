@@ -48,7 +48,7 @@ export default {
         this.authorSelect = this.authorSelect.concat(this.$route.query['authorSelect[]']);
     }
      if (this.$route.query['nxbSelect[]']) {
-        this.authorSelect=this.authorSelect.concat(this.$route.query['nxbSelect[]']);
+        this.nxbSelect=this.nxbSelect.concat(this.$route.query['nxbSelect[]']);
     }
     if (this.$route.query.min) {
       this.min = this.$route.query.min;
