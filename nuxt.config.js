@@ -34,7 +34,7 @@ export default {
   css:[],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   {src: '~/plugins/paginate.js',mode:'client'},
+   {src: '~/plugins/paginate.js',ssr:false},
    { src: '~/plugins/paypal.js', ssr: false },
    {src:'~/plugins/vuelidate.js'},
   ],
