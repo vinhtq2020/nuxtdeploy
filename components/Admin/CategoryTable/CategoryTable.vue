@@ -55,7 +55,7 @@
               </td>
               <td>{{ po.id }}</td>
               <td>{{ po.category_name }}</td>
-              <td>{{po.book_count}}</td>
+              <td>{{ po.book_count }}</td>
               <td>
                 <nuxt-link
                   :to="`/admin/category/edit/${po.id}`"
@@ -70,7 +70,7 @@
             </tr>
           </tbody>
         </table>
-        <paginate
+        <!-- <paginate
           :margin-pages="1"
           :page-range="1"
           :page-count="totalPage"
@@ -86,14 +86,20 @@
           :next-link-class="'page-link'"
           :active-class="'active'"
         >
-        </paginate>
+        </paginate> -->
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+        ></b-pagination>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseRequest from "@/core/BaseRequest";
+import BaseRequest from '@/core/BaseRequest'
 
 export default {
   data() {
@@ -101,46 +107,50 @@ export default {
       categories: [],
       currentPage: 1,
       totalPage: 1,
-    };
+      rows:90,
+      perPage:12,
+    }
   },
   mounted() {
-    this.getCategories();
+    this.getCategories()
   },
   watch: {
     currentPage() {
-      this.getCategories();
+      this.getCategories()
     },
   },
   methods: {
     clickCallback(page) {
       // tham số page là page hiện tại
-      this.currentPage = page;
+      this.currentPage = page
     },
     getCategories() {
       // this.loading = true;
-      BaseRequest.get("category?page=" + this.currentPage).then((response) => {
-        console.log("getCategories:", response.data);
-        this.categories = response.data.data;
-        this.totalPage = response.data.last_page;
+      BaseRequest.get('category?page=' + this.currentPage).then((response) => {
+        console.log('getCategories:', response.data)
+        this.categories = response.data.data
+        this.totalPage = response.data.last_page
+        this.perPage = response.data.per_page;
+        this.rows = this.totalPage*this.perPage
+        
         // this.loading = false;
-      });
+      })
     },
     deleteCategory(id) {
-      BaseRequest.delete("category/" + id)
+      BaseRequest.delete('category/' + id)
         .then((response) => {
-          console.log(response);
-          this.getCategories();
+          console.log(response)
+          this.getCategories()
         })
         .catch((error) => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
   },
-};
+}
 </script>
 
 <style>
-
 html,
 body {
   padding: 0;

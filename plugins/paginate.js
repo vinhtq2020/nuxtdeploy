@@ -1,3 +1,3 @@
 import Vue from 'vue';
-import Paginate from 'vuejs-paginate';
+var Paginate = require('vuejs-paginate');
 Vue.component("Paginate",Paginate)

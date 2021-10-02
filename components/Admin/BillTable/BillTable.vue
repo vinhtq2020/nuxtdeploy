@@ -52,7 +52,7 @@
             </tr>
           </tbody>
         </table>
-        <paginate
+        <!-- <paginate
           :page-count="totalPage"
           :click-handler="clickCallback"
           :prev-text="'Prev'"
@@ -66,7 +66,13 @@
           :next-link-class="'page-link'"
           :active-class="'active'"
         >
-        </paginate>
+        </paginate> -->
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+        ></b-pagination>
       </div>
     </div>
   </div>
@@ -85,6 +91,9 @@ export default {
       bills: [],
       currentPage: 1,
       totalPage: 1,
+
+        rows: 90,
+      perPage: 12,
     };
   },
   watch: {
@@ -110,6 +119,8 @@ export default {
             this.totalPage = this.pageData;
           } else {
             this.totalPage = result.data.last_page;
+            this.perPage = result.data.per_page;
+            this.rows = this.perPage * this.totalPage;
           }
         })
         .catch((err) => {

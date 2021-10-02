@@ -16,8 +16,7 @@
                 :to="{ path: '/admin/author/create' }"
                 class="btn btn-success"
                 data-toggle="modal"
-                ><i class="material-icons">&#xE147;</i>Add New
-                Author</nuxt-link
+                ><i class="material-icons">&#xE147;</i>Add New Author</nuxt-link
               >
               <!-- <nuxt-link to="#" class="btn btn-danger" data-toggle="modal"
                 ><i class="material-icons">&#xE15c;</i>Delete</nuxt-link
@@ -71,7 +70,7 @@
             </tr>
           </tbody>
         </table>
-        <paginate
+        <!-- <paginate
           :page-count="totalPage"
           :click-handler="clickCallback"
           :prev-text="'Prev'"
@@ -85,14 +84,20 @@
           :next-link-class="'page-link'"
           :active-class="'active'"
         >
-        </paginate>
+        </paginate> -->
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+        ></b-pagination>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseRequest from "@/core/BaseRequest";
+import BaseRequest from '@/core/BaseRequest'
 
 export default {
   data() {
@@ -100,47 +105,50 @@ export default {
       authors: [],
       currentPage: 1,
       totalPage: 1,
-    };
+
+      rows: 90,
+      perPage: 12,
+    }
   },
   mounted() {
-    this.getAuthors();
+    this.getAuthors()
   },
   watch: {
     currentPage() {
-      this.getAuthors();
+      this.getAuthors()
     },
   },
   methods: {
     clickCallback(page) {
       // tham số page là page hiện tại
-      this.currentPage = page;
+      this.currentPage = page
     },
     getAuthors() {
       // this.loading = true;
-      BaseRequest.get("author?page=" + this.currentPage).then((response) => {
-        console.log("getAuthor:", response.data);
-        this.authors = response.data.data;
-        this.totalPage = response.data.last_page;
+      BaseRequest.get('author?page=' + this.currentPage).then((response) => {
+        console.log('getAuthor:', response.data)
+        this.authors = response.data.data
+        this.totalPage = response.data.data.last_page
+        this.perPage = response.data.data.per_page
+        this.rows = this.perPage * this.totalPage
         // this.loading = false;
-      });
+      })
     },
     deleteAuthor(id) {
-      BaseRequest.delete("author/" + id)
+      BaseRequest.delete('author/' + id)
         .then((response) => {
-          console.log(response);
-          this.getCategories();
+          console.log(response)
+          this.getCategories()
         })
         .catch((error) => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
   },
-  
-};
+}
 </script>
 
 <style>
-
 html,
 body {
   padding: 0;

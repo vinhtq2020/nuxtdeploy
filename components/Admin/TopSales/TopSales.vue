@@ -22,10 +22,9 @@
                   <label for="selectAll"></label>
                 </span>
               </th> -->
-              <th >id book</th>
+              <th>id book</th>
               <th>Book name</th>
               <th>number of purchases</th>
-              
             </tr>
           </thead>
           <tbody>
@@ -44,13 +43,10 @@
               <td>{{ po.id }}</td>
               <td>{{ po.book_name }}</td>
               <td>{{ po.bill_detail_count }}</td>
-              
-
-              
             </tr>
           </tbody>
         </table>
-        <paginate
+        <!-- <paginate
         v-if="numberColumn"
           :page-count="totalPage"
           :click-handler="clickCallback"
@@ -65,48 +61,55 @@
           :next-link-class="'page-link'"
           :active-class="'active'"
         >
-        </paginate>
+        </paginate> -->
+        <!-- <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+        ></b-pagination> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseRequest from "@/core/BaseRequest";
+import BaseRequest from '@/core/BaseRequest'
 
 export default {
-  props: ["numberColumn"],
+  props: ['numberColumn'],
   mounted() {
-    this.getTopSaleBook(5);
+    this.getTopSaleBook(5)
   },
   data() {
     return {
       books: [],
       currentPage: 1,
       totalPage: 1,
-    };
+      // rows:90,
+      // perPage:12,
+    }
   },
   watch: {
     currentPage() {
-      this.getBill();
+      this.getBill()
     },
   },
   methods: {
-    clickCallback(page){
+    clickCallback(page) {
       // tham số page là page hiện tại
-      this.currentPage = page;
+      this.currentPage = page
     },
     getTopSaleBook(number) {
-      BaseRequest.get("book/action/getBookBestSale/" + number)
+      BaseRequest.get('book/action/getBookBestSale/' + number)
         .then((result) => {
-          console.log('book sale',result.data);
-          this.books = result.data;
+          console.log('book sale', result.data)
+          this.books = result.data
         })
         .catch((err) => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     },
   },
-
-};
+}
 </script>

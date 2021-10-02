@@ -46,19 +46,27 @@
               <td>{{ po.name }}</td>
               <td>{{ po.email }}</td>
               <td>
-                <select name="" id="" v-model="po.role_id" @change="changeRole(po.id, po.role_id)">
-                    <option value=1>admin</option>
-                    <option value=2>user</option>
+                <select
+                  name=""
+                  id=""
+                  v-model="po.role_id"
+                  @change="changeRole(po.id, po.role_id)"
+                >
+                  <option value="1">admin</option>
+                  <option value="2">user</option>
                 </select>
               </td>
-              <td><router-link :to="{path:`/admin/usermanager/infouser/${po.id}`}" class="add-quatity"
+              <td>
+                <router-link
+                  :to="{ path: `/admin/usermanager/infouser/${po.id}` }"
+                  class="add-quatity"
                   ><i class="material-icons">&#xe88e;</i></router-link
-                ></td>
-              
+                >
+              </td>
             </tr>
           </tbody>
         </table>
-        <paginate
+        <!-- <paginate
           :page-count="totalPage"
           :click-handler="clickCallback"
           :prev-text="'Prev'"
@@ -72,59 +80,71 @@
           :next-link-class="'page-link'"
           :active-class="'active'"
         >
-        </paginate>
+        </paginate> -->
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+        ></b-pagination>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
-import BaseRequest from "@/core/BaseRequest";
+import BaseRequest from '@/core/BaseRequest'
 
 export default {
-  props: ["pageData"],
+  props: ['pageData'],
   mounted() {
-    this.getUser();
+    this.getUser()
   },
   data() {
     return {
       users: [],
       currentPage: 1,
       totalPage: 1,
-    };
+      rows: 90,
+      perPage: 12,
+    }
   },
   watch: {
     currentPage() {
-      this.getUser();
+      this.getUser()
     },
   },
   methods: {
     clickCallback(page) {
       // tham số page là page hiện tại
-      this.currentPage = page;
+      this.currentPage = page
     },
     getUser() {
-      BaseRequest.get("user/action/getAll?page="+this.currentPage)
+      BaseRequest.get('user/action/getAll?page=' + this.currentPage)
         .then((result) => {
-          this.users = result.data.user_list.data;
-          console.log(this.users);
+          this.users = result.data.user_list.data
+          this.totalPage = result.data.last_page
+          this.perPage = result.data.per_page
+          this.rows = this.totalPage*this.perPage
+          console.log(this.users)
         })
         .catch((err) => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     },
 
-    changeRole(id,roleId){
-       
-       BaseRequest.post('user/action/changeRole',{user_id:id,role_id:roleId}).then((result) => {
-            console.log(result.data.message);
-        }).catch((err) => {
-            console.log(err);
-        });
-    }
+    changeRole(id, roleId) {
+      BaseRequest.post('user/action/changeRole', {
+        user_id: id,
+        role_id: roleId,
+      })
+        .then((result) => {
+          console.log(result.data.message)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
-
-};
+}
 </script>
-

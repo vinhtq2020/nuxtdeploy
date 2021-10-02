@@ -17,7 +17,7 @@
       />
     </div>
     <div class="mt-2">
-      <paginate
+      <!-- <paginate
       :page-range="1"
         :page-count="totalPage"
         :click-handler="clickCallback"
@@ -32,7 +32,15 @@
         :next-link-class="'page-link'"
         :active-class="'active'"
       >
-      </paginate>
+      </paginate> -->
+      
+      <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+    ></b-pagination>
+
     </div>
   </div>
 </template>
@@ -91,6 +99,8 @@ export default {
       keyWord: "",
       currentPage: 1,
       totalPage: 1,
+      rows:90,
+      perPage:12,
     };
   },
   watch: {
@@ -136,6 +146,8 @@ export default {
         this.books = response.data.bookData.data;
         this.searchResult = response.data.bookData.total;
         this.totalPage = response.data.bookData.last_page;
+        this.perPage = response.data.bookData.per_page;
+        this.rows = this.perPage * this.totalPage;
         console.log('totalPage',this.totalPage);
       });
     },

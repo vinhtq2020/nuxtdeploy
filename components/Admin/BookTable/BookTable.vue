@@ -59,11 +59,7 @@
                 <td>{{ po.id }}</td>
                 <td>{{ po.book_name }}</td>
                 <td>
-                  <img
-                    :src="apiUrl+po.image.url"
-                    alt=""
-                    width="50px"
-                  />
+                  <img :src="apiUrl + po.image.url" alt="" width="50px" />
                 </td>
                 <td>{{ po.category.category_name }}</td>
                 <td>{{ parseInt(po.price) }}</td>
@@ -79,7 +75,9 @@
                   <a href="#" class="delete" @click="deleteBook(po.id)"
                     ><i class="material-icons">&#xE872;</i></a
                   >
-                  <nuxt-link :to="`/admin/book/bookadded/${po.id}`" class="add-quatity"
+                  <nuxt-link
+                    :to="`/admin/book/bookadded/${po.id}`"
+                    class="add-quatity"
                     ><i class="material-icons">&#xE148;</i></nuxt-link
                   >
                 </td>
@@ -87,7 +85,7 @@
             </tbody>
           </table>
         </div>
-        <paginate
+        <!-- <paginate
             :page-count="totalPage"
             :click-handler="clickCallback"
             :prev-text="'Prev'"
@@ -101,18 +99,24 @@
             :next-link-class="'page-link'"
             :active-class="'active'"
           >
-          </paginate>
+          </paginate> -->
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+        ></b-pagination>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseRequest from "@/core/BaseRequest.js";
+import BaseRequest from '@/core/BaseRequest.js'
 
 export default {
   mounted() {
-    this.getBooks();
+    this.getBooks()
   },
   data() {
     return {
@@ -120,41 +124,49 @@ export default {
       books: [],
       currentPage: 1,
       totalPage: 1,
-      apiUrl:process.env.VUE_APP_DATABASE_URL
-    };
+      apiUrl: process.env.VUE_APP_DATABASE_URL,
+
+      rows: 90,
+      perPage: 12,
+    }
   },
   watch: {
     currentPage() {
-      this.getBooks();
+      this.getBooks()
     },
   },
   methods: {
     clickCallback(page) {
       // tham số page là page hiện tại
-      this.currentPage = page;
+      this.currentPage = page
     },
     getBooks() {
-      BaseRequest.get("book?page=" + this.currentPage).then((response) => {
-        console.log("getBooks:", response.data);
-        this.books = response.data.data;
-        this.totalPage = response.data.last_page;
-      });
+      BaseRequest.get('book?page=' + this.currentPage).then((response) => {
+        console.log('getBooks:', response.data)
+        this.books = response.data.data
+        this.totalPage = response.data.last_page
+        this.perPage = response.data.per_page
+        this.rows = this.totalPage* this.perPage
+      })
     },
-    deleteBook(id){
-      console.log('delete '+id);
-      BaseRequest.delete("book/"+id).then((result) => {
-        console.log("book delete",result);
-        BaseRequest.delete("image/"+id).then((response) => {
-          console.log("image delete", response);
-          this.getBooks();
-        }).catch((error) => {
-          console.log(error);          
-        });
-      }).catch((err) => {
-        console.log(err);
-      });
-    }
+    deleteBook(id) {
+      console.log('delete ' + id)
+      BaseRequest.delete('book/' + id)
+        .then((result) => {
+          console.log('book delete', result)
+          BaseRequest.delete('image/' + id)
+            .then((response) => {
+              console.log('image delete', response)
+              this.getBooks()
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
-
-};
+}
 </script>

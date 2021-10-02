@@ -68,7 +68,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    
+    '@nuxtjs/bootstrap-vue',
+
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
