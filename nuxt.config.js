@@ -30,9 +30,7 @@ export default {
         src:"https://embed.tawk.to/614fd42925797d7a8900d6a7/1fgft9ghq",
         defer: true
       },
-      {
-        src:"https://unpkg.com/vuejs-paginate@0.9.0"
-      }
+      
   ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
