@@ -1,7 +1,7 @@
 <template>
   <div>
     <user-navigation/>
-    <nuxt />
+    <nuxt/>
     <footer-page/>
   </div>
 </template>

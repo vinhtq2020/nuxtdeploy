@@ -39,18 +39,16 @@
 
 <script>
 
-
+import queryString from 'query-string'
 import BaseRequest from "@/core/BaseRequest";
 import CardProduct from "@/components/CardProduct/CardProduct.vue";
-import queryString from 'query-string'
-
 export default {
   mounted() {
-    if (this.$route.query.authorSelect != null) {
-      this.authorSelect = this.$route.query.authorSelect;
+    if (this.$route.query['authorSelect[]'] !== null) {
+        this.authorSelect = this.authorSelect.concat(this.$route.query['authorSelect[]']);
     }
-    if (this.$route.query.nxbSelect != null) {
-      this.nxbSelect = this.$route.query.nxbSelect;
+     if (this.$route.query['nxbSelect[]']) {
+        this.authorSelect=this.authorSelect.concat(this.$route.query['nxbSelect[]']);
     }
     if (this.$route.query.min) {
       this.min = this.$route.query.min;
@@ -64,8 +62,8 @@ export default {
     if (this.$route.query.q) {
       this.q = this.$route.query.q;
     }
-    this.getBookToSearch();
-    if (this.q != "") {
+    setTimeout(this.getBookToSearch(),0);
+    if (this.q !== "") {
       this.keyWord = this.q;
     } else if (this.$route.params.categoryId) {
       BaseRequest.get("category/" + this.$route.params.categoryId).then(
@@ -96,17 +94,17 @@ export default {
     };
   },
   watch: {
-    currentPage: function() {
+    currentPage() {
       this.getBookToSearch();
     },
   },
   methods: {
-    clickCallback: function(page) {
+    clickCallback(page) {
       // tham số page là page hiện tại
       this.currentPage = page;
     },
     getBookToSearch() {
-      var query = {};
+      let query = {};
       if (this.authorSelect.length !== 0) {
         query = { ...query, author_ids: this.authorSelect };
       }
