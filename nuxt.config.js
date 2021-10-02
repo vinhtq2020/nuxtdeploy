@@ -24,6 +24,11 @@ export default {
       },
       {
         src:"//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+      },
+      {
+        hid:"tawk.to",
+        src:"https://embed.tawk.to/614fd42925797d7a8900d6a7/1fgft9ghq",
+        defer: true
       }
   ],
     link: [
