@@ -5,7 +5,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-   data() {
+  data() {
     return {
       VNDToUSD: 22791.95,
       loaded: false,
@@ -27,40 +27,34 @@ export default {
     this.setLoaded()
   },
 
- 
   methods: {
     setLoaded() {
       this.loaded = true
       window.paypal
         .Buttons({
           createOrder: (data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value:
-                        Math.round(
-                          (this.value.totalMoney / this.VNDToUSD) * 100
-                        ) / 100,
-                    },
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value:
+                      Math.round(
+                        (this.value.totalMoney / this.VNDToUSD) * 100
+                      ) / 100,
                   },
-                ],
-              })
-            },
-          
-          onApprove() {
-            return async (data, actions) => {
-              return await actions.order.capture().then(function (details) {
-                window.location.replace(
-                  `${process.env.VUE_APP_BASE_URL}checkout?errorCode=0`
-                )
-                alert(
-                  'Transaction completed by ' + details.payer.name.given_name
-                )
-              })
-            }
+                },
+              ],
+            })
           },
-          
+
+          onApprove: async (data, actions) => {
+            return await actions.order.capture().then(function (details) {
+              window.location.replace(
+                `${process.env.VUE_APP_BASE_URL}checkout?errorCode=0`
+              )
+              alert('Transaction completed by ' + details.payer.name.given_name)
+            })
+          },
           onError() {
             return (err) => {
               console.error(err)
@@ -68,18 +62,15 @@ export default {
             }
           },
           style: {
-            
-              shape: 'pill',
-              color: 'gold',
-              layout: 'horizontal',
-              label: 'paypal',
-              tagline: false,
-            
+            shape: 'pill',
+            color: 'gold',
+            layout: 'horizontal',
+            label: 'paypal',
+            tagline: false,
           },
         })
         .render(this.$refs.paypal)
     },
   },
-  
 }
 </script>
