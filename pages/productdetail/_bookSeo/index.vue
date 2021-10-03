@@ -151,24 +151,23 @@ export default {
   layout: 'public',
   async asyncData(context) {
     const response=await new Promise((resolve) => {
-      console.log('async ',context.env);
-      resolve(context.$axios.get(process.env.VUE_APP_DATABASE_URL+'api/book/'+context.params.id))
+      resolve(context.$axios.get(process.env.VUE_APP_DATABASE_URL+'api/book/action/getBookBySeo/'+context.params.bookSeo))
     })
-    return {
-      bookId: response.data.id,
-      price: response.data.price,
-      authorName: response.data.author.author_name,
-      republic: response.data.republic,
-      year: response.data.year,
-      categoryId: response.data.category_id,
-      content: response.data.content,
-      NXB: response.data.nxb.nxb_name,
-      bookName: response.data.book_name,
-      urlImage: process.env.VUE_APP_DATABASE_URL+response.data.image.url,
-      authorId: response.data.author_id,
-      quatity: response.data.quatity,
+    return {  
+      bookId: response.data[0].id,
+      price: response.data[0].price,
+      authorName: response.data[0].author.author_name,
+      republic: response.data[0].republic,
+      year: response.data[0].year,
+      categoryId: response.data[0].category_id,
+      content: response.data[0].content,
+      NXB: response.data[0].nxb.nxb_name,
+      bookName: response.data[0].book_name,
+      urlImage: process.env.VUE_APP_DATABASE_URL+response.data[0].image.url,
+      authorId: response.data[0].author_id,
+      quatity: response.data[0].quatity,
       urlCurrent: process.env.VUE_APP_BASE_URL.slice(0,-1)+context.route.path,
-      contentDescription: response.data.content.slice(0, 197) + '...'
+      contentDescription: response.data[0].content.slice(0, 197) + '...'
     }
   },
   data() {
@@ -258,7 +257,7 @@ export default {
       st.href = window.location.href
       st.initialize()
     }
-    if (this.$route.params.id) {
+    if (this.$route.params.bookSeo) {
       // await this.getBookById(this.$route.params.id);
       await this.setStateFromLocal()
       this.jsonld = {
@@ -285,7 +284,6 @@ export default {
     getBookByCategoryId(id) {
       BaseRequest.get('book/action/getBookByCategoryId/' + id + '/' + 4).then(
         (response) => {
-          console.log(response)
           this.booksRelate = response.data
         }
       )

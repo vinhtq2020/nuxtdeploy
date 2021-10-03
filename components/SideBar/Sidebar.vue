@@ -4,13 +4,13 @@
       <h4 style="font-size: 13px">DANH MỤC SẢN PHẨM</h4>
       <ul class="d-flex flex-column">
         <li v-for="cate in categories" :key="cate.id" style="list-style: none">
-          <router-link
-            :to="{ path: '/searchpage', params: { categoryId: cate.id } }"
+          <nuxt-link
+            :to="{ path: `/searchpage/${cate.id}` }"
             class="text-decoration-none text-dark"
             style="font-size: 14px"
           >
             {{ cate.category_name }}
-          </router-link>
+          </nuxt-link>
         </li>
       </ul>
     </div>
@@ -229,11 +229,11 @@ export default {
       //   path: "/searchpage",
       //   query: queryTmp,
       // };
-
-      // if (this.$route.params.categoryId) {
-      //   url = { ...url, params: { categoryId: this.$route.params.categoryId } };
-      // }
-      this.$router.push('searchpage?' + stringified, () => this.$router.go())
+      let url = '/searchpage';
+      if (this.$route.params.categoryId) {
+        url = `${url}/${this.$route.params.categoryId}`
+      }
+      this.$router.push(`${url}?${stringified}`, () => this.$router.go())
     },
     setPrice(min, max) {
       this.min = min

@@ -86,7 +86,7 @@ export default {
     ],
     routes: async () => {
       let { data } = await axios.get('https://laravel-backend-book.herokuapp.com/api/book/action/getAll')
-      return data.map(v => `/productdetail/${v.id}`)
+      return data.map(v => `/productdetail/${v.book_seo}`)
     }
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

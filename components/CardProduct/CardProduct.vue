@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link
+    <nuxt-link
       :to="{
-        path: `/productdetail/${data.id}`,
+        path: `/productdetail/${data.book_seo}`,
        
       }"
       class="text-decoration-none"
@@ -31,7 +31,7 @@
           </p>
         </div>
       </div>
-    </router-link>
+    </nuxt-link>
   </div>
 </template>
 
