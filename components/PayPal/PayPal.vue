@@ -11,15 +11,7 @@ export default {
       loaded: false,
     }
   },
-  // head() {
-  //   return {
-  //     script: [
-  //       {
-  //         src: 'https://www.paypal.com/sdk/js?client-id=AT0_SY5GRDe6KhYEWNv6PAYRkyqZNSjn2Pb_uKC2rwzwgjqeSwGVqySrOvCG4x5ApU8e4ydOah6M8DZx',
-  //       },
-  //     ],
-  //   }
-  // },
+
   computed: {
     ...mapGetters(['value']),
   },
