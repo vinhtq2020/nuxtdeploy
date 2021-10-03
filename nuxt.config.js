@@ -1,3 +1,4 @@
+const axios = require('axios');
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -8,47 +9,48 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    script:[
+    script: [
       {
-        src:'https://code.jquery.com/jquery-3.5.1.slim.min.js',
+        src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js',
       },
       {
-          src:'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js',
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js',
       },
       {
-        src:"https://www.paypal.com/sdk/js?client-id=AT0_SY5GRDe6KhYEWNv6PAYRkyqZNSjn2Pb_uKC2rwzwgjqeSwGVqySrOvCG4x5ApU8e4ydOah6M8DZx"
+        src: "https://www.paypal.com/sdk/js?client-id=AT0_SY5GRDe6KhYEWNv6PAYRkyqZNSjn2Pb_uKC2rwzwgjqeSwGVqySrOvCG4x5ApU8e4ydOah6M8DZx"
 
       },
       {
-        src:"https://ahachat.com/customer-chats/customer_chat_ENbVt0HmDM614f3facaaddf.js"
+        src: "https://ahachat.com/customer-chats/customer_chat_ENbVt0HmDM614f3facaaddf.js"
       },
       {
-        src:"//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+        src: "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
       },
       {
-        hid:"tawk.to",
-        src:"https://embed.tawk.to/614fd42925797d7a8900d6a7/1fgft9ghq",
+        hid: "tawk.to",
+        src: "https://embed.tawk.to/614fd42925797d7a8900d6a7/1fgft9ghq",
         defer: true
       },
-      
-  ],
+
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css'
       },
-      {rel:'stylesheet',href:"//cdn-images.mailchimp.com/embedcode/classic-10_7.css"}
+      { rel: 'stylesheet', href: "//cdn-images.mailchimp.com/embedcode/classic-10_7.css" }
     ]
   },
-  loading:{color:'#fff'},
+  loading: { color: '#fff' },
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css:[],
+  css: [],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   {src: '~/plugins/paginate.js',ssr:false},
-   { src: '~/plugins/paypal.js', ssr: false },
-   {src:'~/plugins/vuelidate.js'},
+    { src: '~/plugins/paginate.js', ssr: false },
+    { src: '~/plugins/paypal.js', ssr: false },
+    { src: '~/plugins/vuelidate.js' },
+    {src: '~plugins/vue-gtag.js',mode:'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,11 +71,40 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/bootstrap-vue',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
 
   ],
-
+  sitemap: {
+    hostname: 'https://webbanbook.herokuapp.com',
+    exclude: [
+      '/account/**',
+      '/admin/**',
+      '/account',
+      '/searchpage'
+    ],
+    routes: async () => {
+      let { data } = await axios.get('https://laravel-backend-book.herokuapp.com/api/book/action/getAll')
+      return data.map(v => `/productdetail/${v.id}`)
+    }
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  // Robots.txt
+  robots: [
+    {
+      UserAgent: '*',
+      Allow: '/',
+      Disallow: '/admin',
+    },
+    {
+      UserAgent: '*',
+      Disallow: '/account',
+      Sitemap: 'https://webbanbook.herokuapp.com/sitemap.xml'
+    }
+  ],
+
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -86,8 +117,8 @@ export default {
   build: {
   },
 
-  env:{
-    VUE_APP_DATABASE_URL:process.env.VUE_APP_DATABASE_URL,
-    VUE_APP_BASE_URL:process.env.VUE_APP_BASE_URL
+  env: {
+    VUE_APP_DATABASE_URL: process.env.VUE_APP_DATABASE_URL,
+    VUE_APP_BASE_URL: process.env.VUE_APP_BASE_URL
   }
 }
