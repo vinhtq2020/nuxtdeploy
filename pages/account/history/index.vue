@@ -1,6 +1,6 @@
 <template>
   <div style="background: rgb(250,250,250)">
-    <navigation />
+  
     <div class="container mt-4">
       <div class="row">
         <div class="col-2" style="height:100vh">

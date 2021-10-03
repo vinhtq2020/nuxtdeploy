@@ -72,7 +72,7 @@ export default {
 
     if (this.$route.query.errorCode != null) {
       this.errorCode = this.$route.query.errorCode
-      if (this.errorCode === 0) {
+      if (this.errorCode === '0') {
         console.log('errorCode: ', this.$route.query.errorCode)
         this.checkOut()
       }
@@ -117,12 +117,10 @@ export default {
       const token = window.localStorage.getItem('token')
       if (token == null) {
         alert('bạn cần đăng nhập để tiếp tục')
+      } else if (this.value.count === 0) {
+        alert('giỏ hàng đang trống không thể thanh toán')
       } else {
-        if (this.value.count === 0) {
-          alert('giỏ hàng đang trống không thể thanh toán')
-        } else {
-          this.show = true
-        }
+        this.show = true
       }
     },
   },
