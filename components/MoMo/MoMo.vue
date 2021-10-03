@@ -17,8 +17,8 @@ export default {
       secretkey: "6fCSqfD0pqC7t4Qn1AvVc6rDUKmpnMsH",
 
       orderInfo: "pay with MoMo",
-      returnUrl: "https://webbansachonline.netlify.app/check-out",
-      notifyUrl: "https://webbansachonline.netlify.app/check-out",
+      returnUrl: `${process.env.VUE_APP_BASE_URL}checkout`,
+      notifyUrl:  `${process.env.VUE_APP_BASE_URL}checkout`,
       amount: "1000",
       requestType: "captureMoMoWallet",
       extraData: "", //pass empty value if your merchant does not have stores

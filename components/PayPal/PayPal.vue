@@ -52,7 +52,7 @@ export default {
             return async (data, actions) => {
               return await actions.order.capture().then(function (details) {
                 window.location.replace(
-                  'https://webbansachonline.netlify.app/check-out?errorCode=0'
+                  `${process.env.VUE_APP_BASE_URL}checkout?errorCode=0`
                 )
                 alert(
                   'Transaction completed by ' + details.payer.name.given_name
@@ -64,7 +64,7 @@ export default {
           onError() {
             return (err) => {
               console.error(err)
-              window.location.href = '/your-error-page-here'
+              window.location.href = `${process.env.VUE_APP_BASE_URL}checkout`
             }
           },
           style: {

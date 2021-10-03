@@ -6,8 +6,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'Đây là website bán sách của nhóm chúng em phục vụ cho môn Thương main điện tử, mong mọi người nhiệt tình ủng hộ' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     script: [
       {
@@ -39,7 +39,8 @@ export default {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css'
       },
-      { rel: 'stylesheet', href: "//cdn-images.mailchimp.com/embedcode/classic-10_7.css" }
+      { rel: 'stylesheet', href: "//cdn-images.mailchimp.com/embedcode/classic-10_7.css" },
+      {rel:'canonical', href:"https://webbanbook.herokuapp.com/"}
     ]
   },
   loading: { color: '#fff' },
