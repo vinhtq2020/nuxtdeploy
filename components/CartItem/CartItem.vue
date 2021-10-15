@@ -7,12 +7,12 @@
             <img :src="apiUrl + urlImage" alt="" style="width:130px;height:130px;"/>
           </div>
           <div class="col-8" style="font-size:14px">
-            <router-link to="#">{{ bookName }}</router-link>
+            <nuxt-link to="#">{{ bookName }}</nuxt-link>
             <br />
             <br />
             <div>
               -Tác giả:
-              <span><router-link to="#">{{authorName}}</router-link></span>
+              <span><nuxt-link to="#">{{authorName}}</nuxt-link></span>
             </div>
             <br />
             <a href="#" @click="removeBook()">Xóa</a>

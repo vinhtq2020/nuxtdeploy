@@ -72,7 +72,7 @@ export default {
 
     if (this.$route.query.errorCode != null) {
       this.errorCode = this.$route.query.errorCode
-      if (this.errorCode === '0') {
+      if (this.errorCode === '0' && this.value.count!=0) {
         console.log('errorCode: ', this.$route.query.errorCode)
         this.checkOut()
       }
