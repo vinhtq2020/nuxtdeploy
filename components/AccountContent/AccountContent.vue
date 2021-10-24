@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="userId">
     <div style="font-size:19px;font-weight:350" class="mt-3 mb-3">
       Thông tin tài khoản
     </div>

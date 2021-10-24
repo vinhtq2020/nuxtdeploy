@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="bills!=null">
     <div style="font-size:19px;font-weight:350" class="mt-3 mb-3">
       Đơn hàng của tôi
     </div>
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      bills: [],
+      bills: null,
       userId: null,
       
     };

@@ -3,7 +3,7 @@
     <script type="application/ld+json" v-html="jsonld"></script>
     <div class="container mt-3">
       <h1 style="font-size: 32px">CHI TIẾT SẢN PHẨM</h1>
-      <div class="row rounded" style="background: white">
+      <div class="border rounded" style="background: white"> <div class="row">
         <div class="col-5">
           <div class="group-image">
             <div style="width: 400px; height: 400px; background: white">
@@ -92,18 +92,18 @@
             <div class="sharethis-inline-share-buttons"></div>
           </div>
         </div>
+        </div>
       </div>
       <div>
-        <!-- <div class="mt-4" style="font-size:18px">SẢN PHẨM TƯƠNG TỰ</div> -->
         <h3 class="mt-4" style="font-size: 18px">SẢN PHẨM TƯƠNG TỰ</h3>
-        <div class="row rounded p-4">
+        <div class="border rounded bg-white">
           <slider :itemShow="4" :parentData="booksRelate" />
         </div>
       </div>
       <div>
         <h3 class="mt-4" style="font-size: 18px">THÔNG TIN CHI TIẾT</h3>
-        <div class="row rounded p-4">
-          <div class="col-8" style="background: white">
+        <div class="rounded">
+          <div class="col-8 border " style="background: white">
             <table>
               <tbody>
                 <tr>
@@ -130,30 +130,37 @@
 
       <div>
         <h3 class="mt-4" style="font-size: 18px">MÔ TẢ SẢN PHẨM</h3>
-        <div class="row">
-          <p
-            class="col-8 rounded p-4"
-            style="background: white; white-space: pre-wrap"
-          >
+        <div>
+          <p class="col-8 border rounded" style="background: white; white-space: pre-wrap">
             {{ content }}
           </p>
         </div>
+      </div>
+      <div class="mb-4">
+        <review-product-detail :data="bookId"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import { mapGetters, mapActions } from 'vuex'
+import ReviewProductDetail from '~/components/ReviewProductDetail/ReviewProductDetail.vue'
 import BaseRequest from '~/core/BaseRequest'
 export default {
+  components: { ReviewProductDetail },
   layout: 'public',
   async asyncData(context) {
-    const response=await new Promise((resolve) => {
-      resolve(context.$axios.get(process.env.VUE_APP_DATABASE_URL+'api/book/action/getBookBySeo/'+context.params.bookSeo))
+    const response = await new Promise((resolve) => {
+      resolve(
+        context.$axios.get(
+          process.env.VUE_APP_DATABASE_URL +
+            'api/book/action/getBookBySeo/' +
+            context.params.bookSeo
+        )
+      )
     })
-    return {  
+    return {
       bookId: response.data[0].id,
       price: response.data[0].price,
       authorName: response.data[0].author.author_name,
@@ -163,11 +170,12 @@ export default {
       content: response.data[0].content,
       NXB: response.data[0].nxb.nxb_name,
       bookName: response.data[0].book_name,
-      urlImage: process.env.VUE_APP_DATABASE_URL+response.data[0].image.url,
+      urlImage: process.env.VUE_APP_DATABASE_URL + response.data[0].image.url,
       authorId: response.data[0].author_id,
       quatity: response.data[0].quatity,
-      urlCurrent: process.env.VUE_APP_BASE_URL.slice(0,-1)+context.route.path,
-      contentDescription: response.data[0].content.slice(0, 197) + '...'
+      urlCurrent:
+        process.env.VUE_APP_BASE_URL.slice(0, -1) + context.route.path,
+      contentDescription: response.data[0].content.slice(0, 197) + '...',
     }
   },
   data() {
@@ -180,58 +188,59 @@ export default {
       jsonld: {},
     }
   },
-  head(){
-    return{
-      title:"chi tiết sản phẩm",
+  head() {
+    return {
+      title: 'chi tiết sản phẩm',
       meta: [
         {
-          property:"og:url",
-          content:this.urlCurrent
+          property: 'og:url',
+          content: this.urlCurrent,
         },
         {
-          property: "og:locale",
-          content: "vi_VN",
+          property: 'og:locale',
+          content: 'vi_VN',
         },
         {
-          hid:"og:site_name",
-          property: "og:site_name",
+          hid: 'og:site_name',
+          property: 'og:site_name',
           content: process.env.VUE_APP_BASE_URL,
         },
         {
-          property: "og:type",
-          content: "website",},
-        
-        {hid:'og:title',property: "og:title", content: this.bookName },
+          property: 'og:type',
+          content: 'website',
+        },
+
+        { hid: 'og:title', property: 'og:title', content: this.bookName },
         {
-          name: "description",
+          name: 'description',
           content: this.contentDescription,
         },
         {
-          property: "og:description",
+          property: 'og:description',
           content: this.contentDescription,
         },
         {
-          property: "og:image",
+          property: 'og:image',
           content: this.urlImage,
         },
         {
-          name: "twitter:card",
-          content: "summary",
+          name: 'twitter:card',
+          content: 'summary',
         },
         {
-          name: "twitter:site",
-          content: "@",
+          name: 'twitter:site',
+          content: '@',
         },
         {
-          name: "twitter:title",
+          name: 'twitter:title',
           content: this.bookName,
         },
         {
-          name: "twitter:description",
+          name: 'twitter:description',
           content: this.contentDescription,
         },
         {
-          name: "twitter:img",
+          name: 'twitter:img',
           content: this.urlImage,
         },
       ],
@@ -240,7 +249,7 @@ export default {
   computed: {
     ...mapGetters(['getBookQuatityInCartById']),
   },
-  
+
   async mounted() {
     // console.log("process.env.VUE_APP_DATABASE_URL: ",process.env.VUE_APP_DATABASE_URL);
     // ShareThis provides javascript embed code for HTML which doesn't work directly for Single Page Applications like the one created with Vue.js/Nuxt.js.
@@ -275,7 +284,7 @@ export default {
         },
       }
 
-      this.getBookByCategoryId(this.categoryId);
+      this.getBookByCategoryId(this.categoryId)
     }
   },
   methods: {

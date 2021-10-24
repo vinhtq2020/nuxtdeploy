@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background: rgb(250, 250, 250)">
     <user-navigation/>
     <nuxt/>
     <footer-page/>

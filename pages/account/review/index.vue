@@ -7,20 +7,19 @@
           <sidebar-account />
         </div>
         <div class="col">
-          <history-content />
+          <review-content/>
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
 
-import HistoryContent from "~/components/HistoryContent/HistoryContent.vue";
 import SidebarAccount from "~/components/SidebarAccount/SidebarAccount.vue";
+import ReviewContent from "~/components/ReviewContent/ReviewContent.vue"
 export default {
-  components: { SidebarAccount, HistoryContent, },
+  components: { SidebarAccount,ReviewContent},
   layout:'public',
 };
 </script>

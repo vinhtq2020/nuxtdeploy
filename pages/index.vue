@@ -2,8 +2,8 @@
   <div class="container mt-3">
     <div class="row">
       <side-bar class="col-3" style="background: white" />
-      <div class="col-9" style="background: white">
-        <div class="border">
+      <div class="col-9">
+        <div class="border" style="background: white">
           <div class="p-2">
             <div>
               <div class="row">

@@ -123,10 +123,10 @@ export default {
       BaseRequest.get('user/action/getAll?page=' + this.currentPage)
         .then((result) => {
           this.users = result.data.user_list.data
-          this.totalPage = result.data.last_page
-          this.perPage = result.data.per_page
-          this.rows = this.totalPage*this.perPage
-          console.log(this.users)
+          this.totalPage = result.data.user_list.last_page
+          this.perPage = result.data.user_list.per_page
+          this.rows = this.totalPage * this.perPage
+          console.log(result)
         })
         .catch((err) => {
           console.log(err)

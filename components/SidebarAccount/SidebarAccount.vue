@@ -23,11 +23,18 @@
           style="text-decoration:none"
           class="nav-link text-dark"
           data-toggle="pill"
-          :to="{path:'account/history'}"
+          :to="{path:'/account/history'}"
           role="tab"
           aria-selected="false"
           >Quản lý đơn hàng</nuxt-link
         >
+        <nuxt-link style="text-decoration:none"
+          class="nav-link text-dark"
+          data-toggle="pill"
+          :to="{path:'/account/review'}"
+          role="tab"
+          aria-selected="false"
+          >Nhận xét sản phẩm đã mua</nuxt-link>
       </div>
     </div>
   </div>
