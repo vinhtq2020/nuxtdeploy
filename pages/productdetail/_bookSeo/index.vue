@@ -34,8 +34,8 @@
               <h5 style="font-size: 24px">
                 {{ bookName }}
               </h5>
-              <div class="row">
-                <div class="col-2">
+              <div>
+                <div class="d-inline">
                   <b-form-rating
                     style="height: 50%"
                     size="sm"
@@ -47,15 +47,16 @@
                     :value="bookRate != null ? bookRate.rate : 0"
                   />
                 </div>
-                <div class="col ml-2 font-weight-light">
-                  ({{bookRate != null ? bookRate.vote_number : 0}} đánh giá)
+                <div class="font-weight-light d-inline">
+                  ({{ bookRate != null ? bookRate.vote_number : 0 }} đánh giá)
                 </div>
+                <div v-if="bookView!=0" class="d-inline font-weight-light"><span class="ml-2 material-icons align-top"> visibility </span> {{bookView}} lượt xem</div>
               </div>
             </div>
             <div class="col-9">
               <div class="border-bottom">
                 <div
-                  style="background: linear-gradient(100deg,rgb(255, 66, 78),rgb(253, 130, 10));height: 70px"
+                  style="background: linear-gradient(100deg,rgb(255, 66, 78),rgb(253, 130, 10));height: 70px;"
                   class="rounded mb-4 p-2 text-light"
                 >
                   <h2>{{ parseInt(price) + ' ₫' }}</h2>
@@ -206,7 +207,7 @@ export default {
       book: [],
       quatityToBuy: 1,
       baseUrl: process.env.VUE_APP_BASE_URL,
-
+      bookView:0,
       jsonld: {},
     }
   },
@@ -308,6 +309,8 @@ export default {
 
       this.getBookByCategoryId(this.categoryId)
     }
+
+    this.updateBookViewByBookId(this.bookId)
   },
   methods: {
     ...mapActions(['addToCart', 'setStateFromLocal']),
@@ -344,6 +347,20 @@ export default {
         this.quatityToBuy--
       }
     },
+    getBookViewByBookId(bookId){
+      BaseRequest.get(`bookview/action/getBookViewById/${bookId}`).then((response)=>{
+        this.bookView = response.data;
+        console.log(response);
+      })
+    },
+    updateBookViewByBookId(bookId){
+      BaseRequest.put(`bookview/${bookId}`).then((response)=>{
+        console.log(response);
+        this.getBookViewByBookId(bookId);
+      }).catch((error)=>{
+        console.log(error);
+      })
+    }
   },
 }
 </script>
