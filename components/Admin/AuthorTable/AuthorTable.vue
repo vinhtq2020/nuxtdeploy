@@ -130,7 +130,7 @@ export default {
         this.authors = response.data.data
         this.totalPage = response.data.data.last_page
         this.perPage = response.data.data.per_page
-        this.rows = this.perPage * this.totalPage
+        this.rows = response.data.data.total
         // this.loading = false;
       })
     },

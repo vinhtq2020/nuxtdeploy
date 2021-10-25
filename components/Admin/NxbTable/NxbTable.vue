@@ -134,7 +134,7 @@ export default {
         this.nxbs = response.data.data
         this.totalPage = response.data.last_page
         this.perPage = response.data.per_page;
-        this.rows = this.totalPage*this.perPage;
+        this.rows = response.data.total;
         // this.loading = false;
       })
     },

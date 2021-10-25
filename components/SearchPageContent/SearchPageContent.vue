@@ -35,6 +35,7 @@
       </paginate> -->
       
       <b-pagination
+       v-if="searchResult!=0"
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
@@ -147,8 +148,7 @@ export default {
         this.searchResult = response.data.bookData.total;
         this.totalPage = response.data.bookData.last_page;
         this.perPage = response.data.bookData.per_page;
-        this.rows = this.perPage * this.totalPage;
-        console.log('totalPage',this.totalPage);
+        this.rows = response.data.bookData.total;
       });
     },
   },

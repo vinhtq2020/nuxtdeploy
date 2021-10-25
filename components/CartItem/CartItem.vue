@@ -53,7 +53,7 @@ export default {
       price: 0,
       authorName: "",
         urlImage:"",
-      //quatity nay la của số lượng sách đó, ko phải sách có trong giỏ
+      // quatity nay la của số lượng sách đó, ko phải sách có trong giỏ
       quatity: null,
 
        apiUrl: process.env.VUE_APP_DATABASE_URL

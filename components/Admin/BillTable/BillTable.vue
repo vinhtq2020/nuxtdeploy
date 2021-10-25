@@ -120,7 +120,7 @@ export default {
           } else {
             this.totalPage = result.data.last_page;
             this.perPage = result.data.per_page;
-            this.rows = this.perPage * this.totalPage;
+            this.rows = result.data.total;
           }
         })
         .catch((err) => {
