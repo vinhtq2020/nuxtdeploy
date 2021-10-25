@@ -40,7 +40,7 @@
                         placeholder="Viết nhận xét"
                         v-model.trim="content"
                         minlength="1"
-                        maxlength="300"
+                        maxlength="1000"
                         required
                         rows="8"
                         cols="50"

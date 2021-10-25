@@ -8,12 +8,7 @@
           <div class="col-5">
             <div class="group-image">
               <div style="width: 400px; height: 400px; background: white">
-                <img
-                  :src="urlImage"
-                  :alt="bookName"
-                  srcset=""
-                  style="width: 400px; height: 400px"
-                />
+                <img :src="urlImage" :alt="bookName" srcset="" style="width: 400px; height: 400px"/>
               </div>
             </div>
           </div>
@@ -21,31 +16,12 @@
             <div>
               <h4 style="font-size: 13px" class="mt-2">
                 Tác giả:
-                <span
-                  ><router-link
-                    :to="{
-                      name: 'search-page',
-                      query: { authorSelect: [authorId] },
-                    }"
-                    >{{ authorName }}</router-link
-                  ></span
-                >
+                <span><nuxt-link :to="{name: 'search-page',query: { authorSelect: [authorId] },}">{{ authorName }}</nuxt-link></span>
               </h4>
-              <h5 style="font-size: 24px">
-                {{ bookName }}
-              </h5>
+              <h5 style="font-size: 24px">{{ bookName }}</h5>
               <div>
                 <div class="d-inline">
-                  <b-form-rating
-                    style="height: 50%"
-                    size="sm"
-                    no-border
-                    variant="warning"
-                    class="mb-2"
-                    readonly
-                    inline
-                    :value="bookRate != null ? bookRate.rate : 0"
-                  />
+                  <b-form-rating style="height: 50%" size="sm" no-border variant="warning" class="mb-2" readonly inline :value="bookRate != null ? bookRate.rate : 0"/>
                 </div>
                 <div class="font-weight-light d-inline">
                   ({{ bookRate != null ? bookRate.vote_number : 0 }} đánh giá)
@@ -55,54 +31,23 @@
             </div>
             <div class="col-9">
               <div class="border-bottom">
-                <div
-                  style="background: linear-gradient(100deg,rgb(255, 66, 78),rgb(253, 130, 10));height: 70px;"
-                  class="rounded mb-4 p-2 text-light"
-                >
+                <div style="background: linear-gradient(100deg,rgb(255, 66, 78),rgb(253, 130, 10));height: 70px;" class="rounded mb-4 p-2 text-light">
                   <h2>{{ parseInt(price) + ' ₫' }}</h2>
                 </div>
               </div>
               <div class="m-2">
                 <div>Số lượng</div>
                 <div v-if="quatity > 0">
-                  <button
-                    class="btn disabled border"
-                    type="button"
-                    style="width: 40px; height: 40px; font-weight: bold"
-                    @click="decreaseQuatity"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="tel"
-                    class="border text-center"
-                    style="
-                      height: 40px;
-                      padding-bottom: 7px;
-                      width: 60px;
-                      font-weight: bold;
-                    "
-                    :value="quatityToBuy"
-                    min="1"
-                    :max="quatity"
-                    readonly
-                  />
-                  <button
-                    class="btn disabled border plus -btn"
-                    type="button"
-                    style="width: 40px; height: 40px; font-weight: bold"
-                    @click="increaseQuatity"
-                  >
+                  <button class="btn disabled border" type="button" style="width: 40px; height: 40px; font-weight: bold" @click="decreaseQuatity">-</button>
+                  <input type="tel" class="border text-center" style="height: 40px;padding-bottom: 7px;width:60px;font-weight:bold;" :value="quatityToBuy" min="1" :max="quatity"
+                    readonly/>
+                  <button class="btn disabled border plus -btn" type="button" style="width: 40px; height: 40px; font-weight: bold" @click="increaseQuatity">
                     +
                   </button>
                   <div>chỉ còn lại {{ quatity }} sản phẩm</div>
                 </div>
                 <div v-if="quatity > 0">
-                  <div
-                    class="btn mt-2 p-3 text-light"
-                    style="width: 300px; background: rgb(255, 57, 69)"
-                    @click="addBookToCart"
-                  >
+                  <div class="btn mt-2 p-3 text-light" style="width: 300px; background: rgb(255, 57, 69)" @click="addBookToCart">
                     Thêm vào giỏ hàng
                   </div>
                 </div>
@@ -115,9 +60,7 @@
       </div>
       <div>
         <h3 class="mt-4" style="font-size: 18px">SẢN PHẨM TƯƠNG TỰ</h3>
-        <div class="border rounded bg-white">
-          <slider :itemShow="4" :parentData="booksRelate" />
-        </div>
+        <div class="border rounded bg-white"><slider :itemShow="4" :parentData="booksRelate"/></div>
       </div>
       <div>
         <h3 class="mt-4" style="font-size: 18px">THÔNG TIN CHI TIẾT</h3>
@@ -146,21 +89,13 @@
           </div>
         </div>
       </div>
-
       <div>
         <h3 class="mt-4" style="font-size: 18px">MÔ TẢ SẢN PHẨM</h3>
         <div>
-          <p
-            class="col-8 border rounded"
-            style="background: white; white-space: pre-wrap"
-          >
-            {{ content }}
-          </p>
+          <p class="col-8 border rounded" style="background: white; white-space: pre-wrap">{{ content }}</p>
         </div>
       </div>
-      <div class="mb-4">
-        <review-product-detail :data="bookId" />
-      </div>
+      <div class="mb-4"><review-product-detail :data="bookId" /></div>
     </div>
   </div>
 </template>
@@ -274,13 +209,9 @@ export default {
   },
 
   async mounted() {
-    // console.log("process.env.VUE_APP_DATABASE_URL: ",process.env.VUE_APP_DATABASE_URL);
-    // ShareThis provides javascript embed code for HTML which doesn't work directly for Single Page Applications like the one created with Vue.js/Nuxt.js.
-    // Re-initializing ShareThis on page mount will fix it for Vue.js apps.
     const st = window.__sharethis__
     if (!st) {
       const script = document.createElement('script')
-
       script.src =
         'https://platform-api.sharethis.com/js/sharethis.js#property=613c94ae46199d00191777b4&product=inline-share-buttons'
       script.async = 'async'
@@ -290,7 +221,7 @@ export default {
       st.initialize()
     }
     if (this.$route.params.bookSeo) {
-      // await this.getBookById(this.$route.params.id);
+     
       await this.setStateFromLocal()
       this.jsonld = {
         '@context': this.baseUrl,
@@ -333,6 +264,7 @@ export default {
           unitPrice: this.price,
           amount: this.price * this.quatityToBuy,
         })
+        alert('thêm vào giỏ hàng thành công!')
       } else {
         alert('số sách loại này được phép mua là ' + this.quatity)
       }
@@ -350,15 +282,11 @@ export default {
     getBookViewByBookId(bookId){
       BaseRequest.get(`bookview/action/getBookViewById/${bookId}`).then((response)=>{
         this.bookView = response.data;
-        console.log(response);
       })
     },
     updateBookViewByBookId(bookId){
       BaseRequest.put(`bookview/${bookId}`).then((response)=>{
-        console.log(response);
         this.getBookViewByBookId(bookId);
-      }).catch((error)=>{
-        console.log(error);
       })
     }
   },
