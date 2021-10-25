@@ -3,95 +3,113 @@
     <script type="application/ld+json" v-html="jsonld"></script>
     <div class="container mt-3">
       <h1 style="font-size: 32px">CHI TIẾT SẢN PHẨM</h1>
-      <div class="border rounded" style="background: white"> <div class="row">
-        <div class="col-5">
-          <div class="group-image">
-            <div style="width: 400px; height: 400px; background: white">
-              <img
-                :src="urlImage"
-                :alt="bookName"
-                srcset=""
-                style="width: 400px; height: 400px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-7">
-          <div>
-            <h4 style="font-size: 13px" class="mt-2">
-              Tác giả:
-              <span
-                ><router-link
-                  :to="{
-                    name: 'search-page',
-                    query: { authorSelect: [authorId] },
-                  }"
-                  >{{ authorName }}</router-link
-                ></span
-              >
-            </h4>
-            <h5 style="font-size: 24px">
-              {{ bookName }}
-            </h5>
-          </div>
-          <div class="col-9">
-            <div class="border-bottom">
-              <div
-                style="background: rgb(250, 250, 250); height: 100px"
-                class="rounded mb-4 p-2"
-              >
-                <h2>{{ parseInt(price) + ' ₫' }}</h2>
-              </div>
-            </div>
-            <div class="m-2">
-              <div>Số lượng</div>
-              <div v-if="quatity > 0">
-                <button
-                  class="btn disabled border"
-                  type="button"
-                  style="width: 40px; height: 40px; font-weight: bold"
-                  @click="decreaseQuatity"
-                >
-                  -
-                </button>
-                <input
-                  type="tel"
-                  class="border text-center"
-                  style="
-                    height: 40px;
-                    padding-bottom: 7px;
-                    width: 60px;
-                    font-weight: bold;
-                  "
-                  :value="quatityToBuy"
-                  min="1"
-                  :max="quatity"
-                  readonly
+      <div class="border rounded pb-4" style="background: white">
+        <div class="row">
+          <div class="col-5">
+            <div class="group-image">
+              <div style="width: 400px; height: 400px; background: white">
+                <img
+                  :src="urlImage"
+                  :alt="bookName"
+                  srcset=""
+                  style="width: 400px; height: 400px"
                 />
-                <button
-                  class="btn disabled border plus -btn"
-                  type="button"
-                  style="width: 40px; height: 40px; font-weight: bold"
-                  @click="increaseQuatity"
-                >
-                  +
-                </button>
-                <div>chỉ còn lại {{ quatity }} sản phẩm</div>
               </div>
-              <div v-if="quatity > 0">
-                <div
-                  class="btn mt-2 p-3 text-light"
-                  style="width: 300px; background: rgb(255, 57, 69)"
-                  @click="addBookToCart"
+            </div>
+          </div>
+          <div class="col-7">
+            <div>
+              <h4 style="font-size: 13px" class="mt-2">
+                Tác giả:
+                <span
+                  ><router-link
+                    :to="{
+                      name: 'search-page',
+                      query: { authorSelect: [authorId] },
+                    }"
+                    >{{ authorName }}</router-link
+                  ></span
                 >
-                  Thêm vào giỏ hàng
+              </h4>
+              <h5 style="font-size: 24px">
+                {{ bookName }}
+              </h5>
+              <div class="row">
+                <div class="col-2">
+                  <b-form-rating
+                    style="height: 50%"
+                    size="sm"
+                    no-border
+                    variant="warning"
+                    class="mb-2"
+                    readonly
+                    inline
+                    :value="bookRate != null ? bookRate.rate : 0"
+                  />
+                </div>
+                <div class="col ml-2 font-weight-light">
+                  ({{bookRate != null ? bookRate.vote_number : 0}} đánh giá)
                 </div>
               </div>
-              <div v-if="quatity == 0" class="text-danger">Hết hàng</div>
             </div>
-            <div class="sharethis-inline-share-buttons"></div>
+            <div class="col-9">
+              <div class="border-bottom">
+                <div
+                  style="background: linear-gradient(100deg,rgb(255, 66, 78),rgb(253, 130, 10));height: 70px"
+                  class="rounded mb-4 p-2 text-light"
+                >
+                  <h2>{{ parseInt(price) + ' ₫' }}</h2>
+                </div>
+              </div>
+              <div class="m-2">
+                <div>Số lượng</div>
+                <div v-if="quatity > 0">
+                  <button
+                    class="btn disabled border"
+                    type="button"
+                    style="width: 40px; height: 40px; font-weight: bold"
+                    @click="decreaseQuatity"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="tel"
+                    class="border text-center"
+                    style="
+                      height: 40px;
+                      padding-bottom: 7px;
+                      width: 60px;
+                      font-weight: bold;
+                    "
+                    :value="quatityToBuy"
+                    min="1"
+                    :max="quatity"
+                    readonly
+                  />
+                  <button
+                    class="btn disabled border plus -btn"
+                    type="button"
+                    style="width: 40px; height: 40px; font-weight: bold"
+                    @click="increaseQuatity"
+                  >
+                    +
+                  </button>
+                  <div>chỉ còn lại {{ quatity }} sản phẩm</div>
+                </div>
+                <div v-if="quatity > 0">
+                  <div
+                    class="btn mt-2 p-3 text-light"
+                    style="width: 300px; background: rgb(255, 57, 69)"
+                    @click="addBookToCart"
+                  >
+                    Thêm vào giỏ hàng
+                  </div>
+                </div>
+                <div v-if="quatity == 0" class="text-danger">Hết hàng</div>
+              </div>
+              <div class="sharethis-inline-share-buttons"></div>
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <div>
@@ -103,7 +121,7 @@
       <div>
         <h3 class="mt-4" style="font-size: 18px">THÔNG TIN CHI TIẾT</h3>
         <div class="rounded">
-          <div class="col-8 border " style="background: white">
+          <div class="col-8 border" style="background: white">
             <table>
               <tbody>
                 <tr>
@@ -131,13 +149,16 @@
       <div>
         <h3 class="mt-4" style="font-size: 18px">MÔ TẢ SẢN PHẨM</h3>
         <div>
-          <p class="col-8 border rounded" style="background: white; white-space: pre-wrap">
+          <p
+            class="col-8 border rounded"
+            style="background: white; white-space: pre-wrap"
+          >
             {{ content }}
           </p>
         </div>
       </div>
       <div class="mb-4">
-        <review-product-detail :data="bookId"/>
+        <review-product-detail :data="bookId" />
       </div>
     </div>
   </div>
@@ -176,6 +197,7 @@ export default {
       urlCurrent:
         process.env.VUE_APP_BASE_URL.slice(0, -1) + context.route.path,
       contentDescription: response.data[0].content.slice(0, 197) + '...',
+      bookRate: response.data[0].book_rate,
     }
   },
   data() {
