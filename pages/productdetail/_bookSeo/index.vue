@@ -144,6 +144,7 @@ export default {
       baseUrl: process.env.VUE_APP_BASE_URL,
       bookView:0,
       jsonld: {},
+      userId:null
     }
   },
   head() {
@@ -239,6 +240,7 @@ export default {
       }
 
       this.getBookByCategoryId(this.categoryId)
+      this.getInfoUser()
     }
 
     this.updateBookViewByBookId(this.bookId)
@@ -288,6 +290,19 @@ export default {
       BaseRequest.put(`bookview/${bookId}`).then((response)=>{
         this.getBookViewByBookId(bookId);
       })
+    },
+    updateBookUserView(id){
+      BaseRequest.post('bookuserview/action/updateBookUserView',{user_id:id,book_id:this.bookId}).then((response)=>{
+        console.log(response);
+      })
+    },
+    async getInfoUser() {
+      await BaseRequest.get("user")
+        .then((response) => {
+          this.userId = response.data.id;
+          this.updateBookUserView(this.userId);
+        })
+        console.log('user: ',this.userId);
     }
   },
 }

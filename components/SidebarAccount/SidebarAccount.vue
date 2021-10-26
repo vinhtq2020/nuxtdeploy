@@ -35,6 +35,13 @@
           role="tab"
           aria-selected="false"
           >Nhận xét sản phẩm đã mua</nuxt-link>
+        <nuxt-link style="text-decoration:none"
+          class="nav-link text-dark"
+          data-toggle="pill"
+          :to="{path:'/account/viewhistory'}"
+          role="tab"
+          aria-selected="false"
+          >Danh sách sản phẩm đã xem</nuxt-link>
       </div>
     </div>
   </div>
