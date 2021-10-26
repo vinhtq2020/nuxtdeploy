@@ -128,8 +128,21 @@
         </div>
       </div>
     </div>
-    
     <!--End mc_embed_signup-->
+
+    <!-- GetResponse -->
+<form action="https://app.getresponse.com/add_subscriber.html" accept-charset="utf-8" method="post">
+	<!-- Trường email (bắt buộc) -->
+	email: <input type="text" name="email"/><br/>
+	<!-- Mã thông báo danh bạ -->
+	<!-- Nhận mã thông báo tại: https://app.getresponse.com/campaign_list.html https://app.getresponse.com/campaign_list.html -->
+	<input type="hidden" name="campaign_token" value="rTyk5" />
+	<!-- Thêm người đăng ký vào chuỗi theo dõi với ngày được xác định (tùy chọn) -->
+	<input type="hidden" name="start_day" value="0" />
+	<!-- Nút Người đăng ký -->
+	<input type="submit" value="Subscribe"/>
+</form>
+    <!-- End GetResponse -->
   </footer>
   <!--End mc_embed_signup-->
 </template>
