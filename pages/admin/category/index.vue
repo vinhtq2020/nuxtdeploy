@@ -20,12 +20,12 @@ this.checkLoggedIn();
       BaseRequest.get("user")
         .then(function(response) {
           if (response.data.role_id === 2) {
-            this.$router.push({ name: "user/home" });
+            this.$router.push({ path: "/" });
           }
         })
         .catch(() => {
           // phải dùng arrow function thì nó mới hiêu this.$router
-          this.$router.push({ name: "user/home" });
+          this.$router.push({ path: "/" });
         });
     },
   }

@@ -136,7 +136,8 @@ export default {
           .then((response) => {
             console.log(response);
             this.loading = false;
-            alert('cập nhật thành công')
+            alert('cập nhật thành công');
+            this.$router.push({path:'/admin/category'})
           })
           .catch((error) => {
             console.log(error);

@@ -104,7 +104,7 @@ export default {
             alert("tạo nxb thành công");
             this.loading = false;
             console.log(response);
-            this.$router.push({ name: "nxb" });
+            this.$router.push({ path: "/admin/nxb" });
           })
           .catch((errors) => {
             console.log(errors);

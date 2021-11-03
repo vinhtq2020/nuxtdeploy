@@ -78,12 +78,12 @@ export default {
       BaseRequest.get("user")
         .then(function(response) {
           if (response.data.role_id === 2) {
-            this.$router.push({ name: "user/home" });
+            this.$router.push({ path: "/" });
           }
         })
         .catch(() => {
           // phải dùng arrow function thì nó mới hiêu this.$router
-          this.$router.push({ name: "user/home" });
+          this.$router.push({ path: "/" });
         });
     },
     action() {
@@ -103,8 +103,8 @@ export default {
           .then((response) => {
             alert("tạo category thành công");
             this.loading = false;
-            console.log(response);
-            // this.$router.push({ name: "category" });
+           
+            this.$router.push({ path: "/admin/category" });
           })
           .catch((errors) => {
             console.log(errors);

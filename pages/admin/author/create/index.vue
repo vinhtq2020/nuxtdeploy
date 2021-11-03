@@ -135,7 +135,7 @@ export default {
             alert("thêm tác giả thành công");
             this.loading = false;
             console.log(response);
-            this.$router.push({ name: "author" });
+            this.$router.push({ path: "/admin/author" });
           })
           .catch((errors) => {
             console.log(errors);
