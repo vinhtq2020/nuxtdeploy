@@ -126,7 +126,7 @@ export default {
         .then((response) => {
           console.log(response);
           alert("Thêm hàng thành công");
-          this.$router.push({ name: "book" });
+          this.$router.push({ path: "/admin/book" });
         })
         .catch((error) => {
           console.log(error);
