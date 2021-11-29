@@ -2,7 +2,7 @@
   <div class="border">
     <div class="search-summary">
       <div class="title d-flex justify-content-start mt-2 border-bottom">
-        <h1 class="mr-2">{{ keyWord }}:</h1>
+        <h1 class="mr-2  font-weight-bold">{{ keyWord }}:</h1>
         <h4>
           <span>{{ searchResult }} </span>kết quả
         </h4>

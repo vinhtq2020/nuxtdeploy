@@ -1,11 +1,14 @@
 <template>
   <div>
-    <div style="font-size: 19px; font-weight: 350" class="mt-3 mb-3">
-      Sách đã xem
-    </div>
     <div>
       <div class="bg-light">
-        <div class="card" style="height: 100vh">
+        <div class="card" style="min-height: 100vh">
+          <div
+            class="font-weight-bold"
+            style="font-size: 30px; border-bottom: 3px solid #6060a9"
+          >
+            Sách đã xem
+          </div>
           <div v-if="books != null">
             <div class="row">
               <div class="col-3" v-for="item in books" :key="item.id">
@@ -15,7 +18,7 @@
                   }"
                   class="text-decoration-none"
                 >
-                  <div class="card product-book m-2" style="border: none;">
+                  <div class="card product-book m-2" style="border: none">
                     <img
                       :src="apiUrl + item.image.url"
                       :alt="item.book.book_name"

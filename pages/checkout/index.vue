@@ -2,7 +2,7 @@
   <div class="container mt-3" style="height: 100vh">
     <div>
       <div style="font-size: 18px">
-        GIỎ HÀNG
+        <span class="font-weight-bold">GiỎ HÀNG</span>
         <span style="font-size: 14px; text-transform: none; font-weight: 300px"
           >({{ value.count }} sản phẩm)</span
         >
@@ -72,7 +72,7 @@ export default {
 
     if (this.$route.query.errorCode != null) {
       this.errorCode = this.$route.query.errorCode
-      if (this.errorCode === '0' && this.value.count!=0) {
+      if (this.errorCode === '0' && this.value.count!==0) {
         console.log('errorCode: ', this.$route.query.errorCode)
         this.checkOut()
       }

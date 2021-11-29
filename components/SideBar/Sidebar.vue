@@ -1,12 +1,12 @@
 <template>
-  <div class="border">
+  <div class="border text-light" style="background:#6060A9">
     <div class="border-bottom p-4">
-      <h4 style="font-size: 13px">DANH MỤC SẢN PHẨM</h4>
+      <h4 style="font-size: 18px">DANH MỤC SẢN PHẨM</h4>
       <ul class="d-flex flex-column">
         <li v-for="cate in categories" :key="cate.id" style="list-style: none">
           <nuxt-link
             :to="{ path: `/searchpage/${cate.id}` }"
-            class="text-decoration-none text-dark"
+            class="text-decoration-none text-light"
             style="font-size: 14px"
           >
             {{ cate.category_name }}
@@ -16,13 +16,13 @@
     </div>
 
     <div class="border-bottom p-4">
-      <h4 style="font-size: 13px" class="mt-2">GIÁ</h4>
-      <ul class="d-flex flex-column" style="list-style: none">
+      <h4 style="font-size: 18px" class="mt-2">GIÁ</h4>
+      <ul class="d-flex flex-column" style="list-style: none;color:#6060A9;">
         <li>
           <div
             class="badge px-2 m-1"
             style="
-              background: rgb(238, 238, 238);
+              background: rgb(231, 231, 255);
               font-weight: 500;
               line-height: 20px;
               cursor: pointer;
@@ -81,7 +81,7 @@
       </ul>
     </div>
     <div class="border-bottom p-4">
-      <h4 style="font-size: 13px" class="mt-2">TÁC GIẢ</h4>
+      <h4 style="font-size: 18px" class="mt-2">TÁC GIẢ</h4>
       <ul class="d-flex flex-column" style="list-style: none">
         <li
           v-for="author in authors"
@@ -105,7 +105,7 @@
       </ul>
     </div>
     <div class="border-bottom p-4">
-      <h4 style="font-size: 13px" class="mt-2">NHÀ XUẤT BẢN</h4>
+      <h4 style="font-size: 18px" class="mt-2">NHÀ XUẤT BẢN</h4>
       <ul class="d-flex flex-column" style="list-style: none">
         <li
           v-for="nxb in nxbs"

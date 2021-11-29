@@ -1,8 +1,8 @@
 <template>
-  <div style="background: rgb(250, 250, 250)">
+  <div>
     <div class="container mt-3">
-      <div class="row" style="height: 100vh">
-        <side-bar class="col-3" style="background: white" />
+      <div class="row" style="min-height: 100vh">
+        <side-bar class="col-3" />
         <content-area class="col-9" style="background: white" />
       </div>
     </div>

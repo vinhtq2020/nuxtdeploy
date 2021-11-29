@@ -5,10 +5,10 @@
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       />
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container" >
+        <nav class="navbar navbar-expand-lg" style="font-size:15px;color:#FFFFE0">
           <nuxt-link class="navbar-brand" :to="{ path: '/' }"
-            >Sách</nuxt-link
+            ><img src="@/static/assets/logoBook.png" alt="" srcset="" width="100px"></nuxt-link
           >
           <button
             class="navbar-toggler"
@@ -38,13 +38,13 @@
                 "
                 class="form-control rounded-0"
                 type="search"
-                placeholder="tìm sản phẩm mong muốn"
+                placeholder="Tìm sản phẩm mong muốn"
                 aria-label="Search"
               />
               <button
                 class="btn text-light my-2 my-sm-0 rounded-0 border-none mr-2"
                 type="submit"
-                style="background: rgb(13, 92, 182)"
+                style="background: #4B088A"
               >
                 Tìm kiếm
               </button>
@@ -81,7 +81,7 @@
                     <i class="material-icons" style="font-size: 50px"
                       >&#xE7fd;</i
                     >
-                    <div style="font-size: 12px" class="mt-2">
+                    <div style="font-size: 15px" class="mt-2">
                       Đăng Nhập/Đăng Ký <br />
                       <span style="font-size: 14px">Tài khoản</span>
                     </div>
@@ -90,7 +90,7 @@
                 <div
                   class="dropdown-menu"
                   aria-labelledby="LoginDropdown"
-                  style="font-size: 12px; font-weight: 400"
+                  style="font-size: 15px; font-weight:bolder"
                 >
                   <!-- <router-link class="dropdown-item" :to="{ name: 'register' }"
                     >Đăng ký</router-link
@@ -116,7 +116,7 @@
                     <i class="material-icons" style="font-size: 50px"
                       >&#xE7fd;</i
                     >
-                    <div style="font-size: 12px" class="mt-2">
+                    <div style="font-size: 15px" class="mt-2">
                       Tài khoản<br />
                       <span style="font-size: 14px">{{ name }}</span>
                     </div>
@@ -125,10 +125,10 @@
                 <div
                   class="dropdown-menu"
                   aria-labelledby="LoginDropdown"
-                  style="font-size: 12px; font-weight: 400"
+                  style="font-size: 15px; font-weight: bolder"
                 >
                   <router-link class="dropdown-item" :to="{ name: 'account' }"
-                    >tài khoản của tôi</router-link
+                    >Tài khoản của tôi</router-link
                   >
                   <router-link
                     v-if="(roleId = 1)"
@@ -138,7 +138,7 @@
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" @click="logout"
-                    >đăng xuất</a
+                    >Đăng xuất</a
                   >
                 </div>
               </div>
@@ -249,6 +249,7 @@ export default {
 
 <style>
 header {
-  background: rgb(1, 127, 255);
+  background: #6060A9;
+
 }
 </style>

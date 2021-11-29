@@ -1,5 +1,5 @@
 <template>
-  <div style="background: rgb(250, 250, 250)">
+  <div style="background: #E7E7FF">
     <script type="application/ld+json" v-html="jsonld"></script>
     <div class="container mt-3">
       <h1 style="font-size: 32px">CHI TIẾT SẢN PHẨM</h1>
@@ -92,7 +92,7 @@
       <div>
         <h3 class="mt-4" style="font-size: 18px">MÔ TẢ SẢN PHẨM</h3>
         <div>
-          <p class="col-8 border rounded" style="background: white; white-space: pre-wrap">{{ content }}</p>
+          <p class="col-8 border rounded" style="background: white; white-space: pre-wrap">{{ content }} {{ content }} {{ content }}</p>
         </div>
       </div>
       <div class="mb-4"><review-product-detail :data="bookId" /></div>

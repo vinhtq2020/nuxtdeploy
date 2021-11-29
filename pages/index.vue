@@ -1,36 +1,42 @@
 <template>
   <div class="container mt-3">
     <div class="row">
-      <side-bar class="col-3" style="background: white" />
+      <side-bar class="col-3" style="background: #6060a9" />
       <div class="col-9">
         <div class="border" style="background: white">
           <div class="p-2">
             <div>
-              <div class="row">
-                <div class="col-4" style="font-size: 20px">
-                  Sản phẩm mới nhất
-                </div>
+              <div
+                class=" font-weight-bold"
+                style="font-size: 30px; border-bottom: 3px solid #6060a9"
+              >
+                Sản phẩm mới nhất
               </div>
+
               <div>
                 <slider :parent-data="newBooks" :item-show="4" />
               </div>
             </div>
             <div>
-              <div class="row">
-                <div class="col-4" style="font-size: 20px">
-                  Sản phẩm bán chạy
-                </div>
+              <div
+                class=" font-weight-bold"
+                style="font-size: 30px; border-bottom: 3px solid #6060a9"
+              >
+                Sản phẩm bán chạy
               </div>
+
               <div>
                 <slider :parent-data="bestSaleBooks" :item-show="4" />
               </div>
             </div>
             <div v-for="item in booksByCategoryId" :key="item.category.id">
-              <div class="row">
-                <div class="col-4" style="font-size: 20px">
-                  {{ item.category.category_name }}
-                </div>
+              <div
+                class="font-weight-bold"
+                style="font-size: 30px; border-bottom: 3px solid #6060a9"
+              >
+                {{ item.category.category_name }}
               </div>
+
               <div>
                 <slider :parent-data="item.books" :item-show="4" />
               </div>

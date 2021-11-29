@@ -1,18 +1,131 @@
 <template>
   <!-- Begin Mailchimp Signup Form -->
-  <footer class="bg-primary mt-4 border" style="font-size: 14px">
+  <footer class="mt-4 border" style="font-size: 14px; background: #6060a9">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
 
-    <div class="container">
-      <div class="row p-5 text-light">
+    <div class="container-fluid">
+      <div>
+        <div class="text-light font-weight-bold text-center mt-4" style="font-size: 25px">
+          ĐĂNG KÝ ĐỂ NHẬN NHIỀU ƯU ĐÃI
+        </div>
+
+        <div class="row justify-content-center">
+          
+          <!-- Begin Mailchimp Signup Form -->
+          <div class="col-4">
+            <div id="mc_embed_signup">
+              <form
+                action="https://gmail.us5.list-manage.com/subscribe/post?u=84eae2e94b1a31aa0641ad4b8&amp;id=c71e9346f6"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate
+              >
+                <div id="mc_embed_signup_scroll">
+                  <div class="mc-field-group">
+                    <input
+                      type="email"
+                      value=""
+                      name="EMAIL"
+                      class="required email form-control"
+                      id="mce-EMAIL"
+                      placeholder="Subscribe email MailChimp"
+                    />
+                  </div>
+                  <div id="mce-responses" class="clear">
+                    <div
+                      class="response"
+                      id="mce-error-response"
+                      style="display: none"
+                    ></div>
+                    <div
+                      class="response"
+                      id="mce-success-response"
+                      style="display: none"
+                    ></div>
+                  </div>
+                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div
+                    style="position: absolute; left: -5000px"
+                    aria-hidden="true"
+                  >
+                    <input
+                      type="text"
+                      name="b_84eae2e94b1a31aa0641ad4b8_c71e9346f6"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                  <div class="clear">
+                    <input
+                      type="submit"
+                      value="Subscribe"
+                      name="subscribe"
+                      id="mc-embedded-subscribe"
+                      class="button"
+                      style="background: rgb(13, 92, 182)"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-2">
+              <!-- GetResponse -->
+              <form
+                action="https://app.getresponse.com/add_subscriber.html"
+                accept-charset="utf-8"
+                method="post"
+              >
+                <!-- Trường email (bắt buộc) -->
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Subscribe email GetResponse"
+                    class="form-control"
+                  />
+                </div>
+
+                <!-- Mã thông báo danh bạ -->
+                <!-- Nhận mã thông báo tại: https://app.getresponse.com/campaign_list.html https://app.getresponse.com/campaign_list.html -->
+                <input type="hidden" name="campaign_token" value="rTyk5" />
+                <!-- Thêm người đăng ký vào chuỗi theo dõi với ngày được xác định (tùy chọn) -->
+                <input type="hidden" name="start_day" value="0" />
+                <!-- Nút Người đăng ký -->
+                <input
+                  type="submit"
+                  value="Subscribe"
+                  class="btn btn-warning mt-3"
+                  style="font: 14px Helvetica, Arial, sans-serif; width: 110px"
+                />
+              </form>
+              <!-- End GetResponse -->
+            </div>
+          </div>
+
+          <!--End mc_embed_signup-->
+        </div>
+
+        <div
+          style="border-bottom: 2px solid rgb(231, 231, 255)"
+          class="col-12"
+        ></div>
+      </div>
+
+      <div class="row p-5 text-light justify-content-center">
         <div class="col-4 mr-2">
           <h4>Về Chúng Tôi</h4>
           <p style="font-size: 17px">
-            webbansachonline.netlify.app là nơi giúp bạn mua sách tiện lợi giá
-            cả phải chăng
+            Book Store là địa điểm mua sách online giá rẻ, tại đây bạn sẽ hoàn
+            toàn an tâm về chất lượng. Bạn có thể tìm kiếm nhiều thể loại sách
+            khác nhau trên thị trường, với chiết khấu cao.
           </p>
         </div>
         <div class="col-3 mr-2" style="font-size: 17px">
@@ -43,7 +156,7 @@
             >
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-3">
           <h4>Thông Tin Liên Hệ</h4>
 
           <ul style="list-style-type: none; padding-left: 0">
@@ -66,100 +179,6 @@
               </span>
             </li>
           </ul>
-          <!-- Begin Mailchimp Signup Form -->
-          
-          <div id="mc_embed_signup">
-            <form
-              action="https://gmail.us5.list-manage.com/subscribe/post?u=84eae2e94b1a31aa0641ad4b8&amp;id=c71e9346f6"
-              method="post"
-              id="mc-embedded-subscribe-form"
-              name="mc-embedded-subscribe-form"
-              class="validate"
-              target="_blank"
-              novalidate
-            >
-              <div id="mc_embed_signup_scroll">
-                <div class="mc-field-group">
-                  <input
-                    type="email"
-                    value=""
-                    name="EMAIL"
-                    class="required email form-control"
-                    id="mce-EMAIL"
-                    placeholder="Subscribe email MailChimp"
-                  />
-                </div>
-                <div id="mce-responses" class="clear">
-                  <div
-                    class="response"
-                    id="mce-error-response"
-                    style="display: none"
-                  ></div>
-                  <div
-                    class="response"
-                    id="mce-success-response"
-                    style="display: none"
-                  ></div>
-                </div>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div
-                  style="position: absolute; left: -5000px"
-                  aria-hidden="true"
-                >
-                  <input
-                    type="text"
-                    name="b_84eae2e94b1a31aa0641ad4b8_c71e9346f6"
-                    tabindex="-1"
-                    value=""
-                  />
-                </div>
-                <div class="clear">
-                  <input
-                    type="submit"
-                    value="Subscribe"
-                    name="subscribe"
-                    id="mc-embedded-subscribe"
-                    class="button"
-                    style="background: rgb(13, 92, 182)"
-                  />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="p-2">
-            <!-- GetResponse -->
-            <form
-              action="https://app.getresponse.com/add_subscriber.html"
-              accept-charset="utf-8"
-              method="post"
-            >
-              <!-- Trường email (bắt buộc) -->
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Subscribe email GetResponse"
-                  class="form-control"
-                />
-              </div>
-              
-              <!-- Mã thông báo danh bạ -->
-              <!-- Nhận mã thông báo tại: https://app.getresponse.com/campaign_list.html https://app.getresponse.com/campaign_list.html -->
-              <input type="hidden" name="campaign_token" value="rTyk5" />
-              <!-- Thêm người đăng ký vào chuỗi theo dõi với ngày được xác định (tùy chọn) -->
-              <input type="hidden" name="start_day" value="0" />
-              <!-- Nút Người đăng ký -->
-              <input
-                type="submit"
-                value="Subscribe"
-                class="btn btn-warning mt-3"
-                style="font:14px Helvetica, Arial, sans-serif;width:110px"
-              />
-            </form>
-            <!-- End GetResponse -->
-          </div>
-
-          <!--End mc_embed_signup-->
         </div>
       </div>
     </div>
