@@ -180,7 +180,8 @@ export default {
           content: this.contentDescription,
         },
         {
-          property: 'og:image:secure',
+          hid:'og:image',
+          property: 'og:image',
           content: this.urlImage,
         },
         {
