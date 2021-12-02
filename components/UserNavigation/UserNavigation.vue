@@ -7,9 +7,9 @@
       />
       <div class="container" >
         <nav class="navbar navbar-expand-lg" style="font-size:15px;color:#FFFFE0">
-          <nuxt-link class="navbar-brand" :to="{ path: '/' }"
+          <!-- <nuxt-link class="navbar-brand" :to="{ path: '/' }"
             ><img src="@/static/assets/logoBook.png" alt="" srcset="" width="100px"></nuxt-link
-          >
+          > -->
           <button
             class="navbar-toggler"
             type="button"
